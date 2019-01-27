@@ -1,0 +1,40 @@
+
+.game-map {
+    background: white;
+    border: 5px solid black;
+    height: 750px;
+    position: relative;
+    width: 1400px;
+}
+
+.building {
+    background-color: black;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+}
+
+.tank1 {
+    display: inline-block;
+    background-image: url("img/tank1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: rotate(90deg);
+}
+
+.tank2 {
+    display: inline-block;
+    background-image: url("img/tank2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: rotate(90deg);
+}
+
