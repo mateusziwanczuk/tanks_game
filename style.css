@@ -8,7 +8,7 @@
 }
 
 .building {
-    background-color: black;
+    background-color: darkgray;
     height: 50px;
     position: absolute;
     width: 50px;
@@ -36,5 +36,10 @@
     width: 50px;
     height: 50px;
     transform: rotate(90deg);
+}
+
+:root {
+    --tankPositionX: 0px;
+    --tankPositionY: 0px;
 }
 

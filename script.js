@@ -1,18 +1,28 @@
+    /**************************************
+     
+                TANKS GAME
+
+    **************************************/
+
 
 function tanksGame() {
     const body = document.querySelector('body');
     const gameContainer = document.createElement('div');
-    const tank1 = document.createElement('div');
     gameContainer.classList.add('game-map');
     body.prepend(gameContainer);
+
+    // Player 1
+    const tank1 = document.createElement('div');
     tank1.classList.add('tank1');
     tank1.dataset.px = 'px';
     gameContainer.prepend(tank1);
 
+    // Player 2 
     const tank2 = document.createElement('div');
     tank2.classList.add('tank2');
     tank2.dataset.px = 'px';
     gameContainer.prepend(tank2);
+
 
     /*********************************************
       
@@ -20,12 +30,12 @@ function tanksGame() {
 
     **********************************************/
 
-    function createRow(startX, endX, Y) {
+    function createRow(startX, endX, y) {
         for (let x = startX; x <= endX; x += 50) {
             const building = document.createElement('div');
             building.classList.add('building');
             building.style.setProperty('left', `${x}px`);
-            building.style.setProperty('top', `${Y}px`);
+            building.style.setProperty('top', `${y}px`);
             gameContainer.append(building);
         }
     }
@@ -61,12 +71,12 @@ function tanksGame() {
     createRow(1250, 1350, 300);
     createRow(1250, 1350, 200);
 
-    function createColumn(startY, endY, X) {
+    function createColumn(startY, endY, x) {
         for (let y = startY; y <= endY; y += 50) {
             const building = document.createElement('div');
             building.classList.add('building');
             building.style.setProperty('top', `${y}px`);
-            building.style.setProperty('left', `${X}px`);
+            building.style.setProperty('left', `${x}px`);
             gameContainer.append(building);
         }
     }
@@ -86,11 +96,6 @@ function tanksGame() {
     createColumn(450, 650, 950);
     createColumn(50, 150, 1050);
     createColumn(250, 350, 1150);
-
-
-
-
-
 
 };
 tanksGame();
