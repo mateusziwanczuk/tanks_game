@@ -15,32 +15,32 @@ function tanksGame() {
             const $tank1 = document.createElement('div');
             $tank1.classList.add('tank1');
             gameContainer.prepend($tank1);
+            this.node = $tank1;
         },
-        node: document.getElementsByClassName('tank1'),
+        node: document.querySelector('.tank1'),
     }
     tank1.createTank();
 
     function tank1Control(e) {
         if (e.keyCode === 39) { // move 50px right
             tank1.positionX += 50;
-            tank1.style.marginLeft = `${tank1.positionX} px`;
+            tank1.node.style.marginLeft = `${tank1.positionX}px`;
                 console.log(tank1);
         } else if (e.keyCode === 37) { // move 50px left
             tank1.positionX -= 50;
-            tank1.style.marginLeft = `${tank1.positionX} px`;
+            tank1.node.style.marginLeft = `${tank1.positionX}px`;
                 console.log(tank1);
         } else if (e.keyCode === 38) { // move 50px top
             tank1.positionY -= 50;
-            tank1.style.marginTop = `${tank1.positionY} px`;
+            tank1.node.style.marginTop = `${tank1.positionY}px`;
                 console.log(tank1);
         } else if (e.keyCode === 40) { // move 50px down
             tank1.positionY += 50;
-            tank1.style.marginTop = `${tank1.positionY} px`;
+            tank1.node.style.marginTop = `${tank1.positionY}px`;
                 console.log(tank1);
         }
     }
     window.addEventListener('keydown', tank1Control);
-
 
  
 
@@ -55,7 +55,7 @@ function tanksGame() {
             $tank2.classList.add('tank2');
             gameContainer.prepend($tank2);
         },
-        node: document.getElementsByClassName('tank2'),
+        node: document.querySelector('.tank2'),
     }
     tank2.createTank();
 
