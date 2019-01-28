@@ -1,8 +1,3 @@
-    /*********************************************************************
-     
-                TANKS GAME
-
-    *********************************************************************/
 
 function tanksGame() {
     const body = document.querySelector('body');
@@ -27,21 +22,27 @@ function tanksGame() {
 
     function tank1Control(e) {
         if (e.keyCode === 39) { // move 50px right
-            tank1.positionX = tank1.positionX + 50;
+            tank1.positionX += 50;
+            tank1.style.marginLeft = `${tank1.positionX} px`;
                 console.log(tank1);
         } else if (e.keyCode === 37) { // move 50px left
-            tank1.positionX = tank1.positionX - 50;
+            tank1.positionX -= 50;
+            tank1.style.marginLeft = `${tank1.positionX} px`;
                 console.log(tank1);
         } else if (e.keyCode === 38) { // move 50px top
-            tank1.positionY = tank1.positionY + 50;
+            tank1.positionY -= 50;
+            tank1.style.marginTop = `${tank1.positionY} px`;
                 console.log(tank1);
         } else if (e.keyCode === 40) { // move 50px down
-            tank1.positionY = tank1.positionY + 50;
+            tank1.positionY += 50;
+            tank1.style.marginTop = `${tank1.positionY} px`;
                 console.log(tank1);
         }
     }
     window.addEventListener('keydown', tank1Control);
 
+
+ 
 
     /**************** Player 2 ****************/
 
@@ -62,16 +63,16 @@ function tanksGame() {
 
     function tank2Control(e) {
         if (e.keyCode === 68) { // move 50px right
-            tank2.positionX = tank2.positionX + 50;
+            tank2.positionX += 50;
                 console.log(tank2);
         } else if (e.keyCode === 65) { // move 50px left
-            tank2.positionX = tank2.positionX - 50;
+            tank2.positionX -= 50;
                 console.log(tank2);
         } else if (e.keyCode === 87) { // move 50px top
-            tank2.positionY = tank2.positionY + 50;
+            tank2.positionY += 50;
                 console.log(tank2);
         } else if (e.keyCode === 83) { // move 50px down
-            tank2.positionY = tank2.positionY + 50;
+            tank2.positionY -= 50;
                 console.log(tank2);
         }
     }
