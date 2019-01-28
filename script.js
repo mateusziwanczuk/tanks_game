@@ -11,33 +11,58 @@ function tanksGame() {
     body.prepend(gameContainer);
 
     // Player 1
-    const tank1 = {
+    var tank1 = {
         armour: 1,
         positionX: 0,
         positionY: 0,
-        isGasPressed: false,
         createTank() {
             const $tank1 = document.createElement('div');
             $tank1.classList.add('tank1');
             gameContainer.prepend($tank1);
-        }
+        },
+        node: document.getElementsByClassName('tank1'),
     }
     tank1.createTank();
 
 
     // Player 2
-    const tank2 = {
+    var tank2 = {
         armour: 1,
         positionX: 0,
         positionY: 0,
-        isGasPressed: false,
         createTank() {
             const $tank2 = document.createElement('div');
             $tank2.classList.add('tank2');
             gameContainer.prepend($tank2);
-        }
+        },
+        node: document.getElementsByClassName('tank2'),
     }
     tank2.createTank();
+
+    var tanks = [tank1, tank2];
+
+        function tank1Control(e) {
+            if (e.keyCode === 39) { // move 50px right
+                tank1.positionX = tank1.positionX + 50;
+                    console.log(tank1);
+            } else if (e.keyCode === 37) { // move 50px left
+                tank1.positionX = tank1.positionX - 50;
+                    console.log(tank1);
+            } else if (e.keyCode === 38) { // move 50px top
+                tank1.positionY = tank1.positionY + 50;
+                    console.log(tank1);
+            } else if (e.keyCode === 40) { // move 50px down
+                tank1.positionY = tank1.positionY + 50;
+                    console.log(tank1);
+            }
+        }
+        window.addEventListener('keydown', tank1Control);
+   
+
+
+ 
+
+
 
 
     /*********************************************************************
