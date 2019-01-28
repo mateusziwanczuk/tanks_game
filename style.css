@@ -28,6 +28,7 @@
     width: 50px;
     height: 50px;
     transform: rotate(90deg);
+    transition: top 1s, left 1s;
 }
 
 .tank2 {
@@ -39,8 +40,9 @@
     position: absolute;
     width: 50px;
     height: 50px;
-    transform: rotate(90deg);
-    margin-top: 50px;
+    transform: rotate(270deg);
+    margin: 700px 0 0 1350px;
+    transition: top 1s, left 1s;
 }
 
 :root {

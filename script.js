@@ -22,26 +22,25 @@ function tanksGame() {
     tank1.createTank();
 
     function tank1Control(e) {
-        tank1.node.style.transition = `top 3s, left 3s`;
         if (e.keyCode === 39) { // move 50px right
+            tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-            tank1.node.style.transform = 'rotate(90deg)';
                 console.log(tank1);
         } else if (e.keyCode === 37) { // move 50px left
+            tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-            tank1.node.style.transform = 'rotate(270deg)';
                 console.log(tank1);
         } else if (e.keyCode === 38) { // move 50px top
+            tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
-            tank1.node.style.transform = 'rotate(360deg)';
                 console.log(tank1);
         } else if (e.keyCode === 40) { // move 50px down
+            tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
-            tank1.node.style.transform = 'rotate(180deg)';
                 console.log(tank1);
         }
     }
@@ -68,7 +67,6 @@ function tanksGame() {
     var tanks = [tank1, tank2];
 
     function tank2Control(e) {
-        tank2.node.style.transition = `top 3s, left 3s`;
         if (e.keyCode === 68) { // move 50px right
             tank2.positionX += 50;
             tank2.node.style.left = `${tank2.positionX}px`;
