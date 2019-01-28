@@ -1,3 +1,7 @@
+* {
+    margin: auto;
+    overflow: hidden;
+}
 
 .game-map {
     background: white;
@@ -21,6 +25,8 @@
     background-position: center;
     background-repeat: no-repeat;
     position: absolute;
+    top: var(--tankPositionY);
+    left: var(--tankPositionX);
     width: 50px;
     height: 50px;
     transform: rotate(90deg);
@@ -36,6 +42,7 @@
     width: 50px;
     height: 50px;
     transform: rotate(90deg);
+    margin-top: 50px;
 }
 
 :root {

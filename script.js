@@ -1,9 +1,8 @@
-    /**************************************
+    /*********************************************************************
      
                 TANKS GAME
 
-    **************************************/
-
+    *********************************************************************/
 
 function tanksGame() {
     const body = document.querySelector('body');
@@ -12,23 +11,40 @@ function tanksGame() {
     body.prepend(gameContainer);
 
     // Player 1
-    const tank1 = document.createElement('div');
-    tank1.classList.add('tank1');
-    tank1.dataset.px = 'px';
-    gameContainer.prepend(tank1);
+    const tank1 = {
+        armour: 1,
+        positionX: 0,
+        positionY: 0,
+        isGasPressed: false,
+        createTank() {
+            const $tank1 = document.createElement('div');
+            $tank1.classList.add('tank1');
+            gameContainer.prepend($tank1);
+        }
+    }
+    tank1.createTank();
 
-    // Player 2 
-    const tank2 = document.createElement('div');
-    tank2.classList.add('tank2');
-    tank2.dataset.px = 'px';
-    gameContainer.prepend(tank2);
+
+    // Player 2
+    const tank2 = {
+        armour: 1,
+        positionX: 0,
+        positionY: 0,
+        isGasPressed: false,
+        createTank() {
+            const $tank2 = document.createElement('div');
+            $tank2.classList.add('tank2');
+            gameContainer.prepend($tank2);
+        }
+    }
+    tank2.createTank();
 
 
-    /*********************************************
+    /*********************************************************************
       
             CREATE BUILDINGS FUNCTION
 
-    **********************************************/
+    *********************************************************************/
 
     function createRow(startX, endX, y) {
         for (let x = startX; x <= endX; x += 50) {
