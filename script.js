@@ -10,7 +10,8 @@ function tanksGame() {
     gameContainer.classList.add('game-map');
     body.prepend(gameContainer);
 
-    // Player 1
+    /**************** Player 1 ****************/
+
     var tank1 = {
         armour: 1,
         positionX: 0,
@@ -24,8 +25,26 @@ function tanksGame() {
     }
     tank1.createTank();
 
+    function tank1Control(e) {
+        if (e.keyCode === 39) { // move 50px right
+            tank1.positionX = tank1.positionX + 50;
+                console.log(tank1);
+        } else if (e.keyCode === 37) { // move 50px left
+            tank1.positionX = tank1.positionX - 50;
+                console.log(tank1);
+        } else if (e.keyCode === 38) { // move 50px top
+            tank1.positionY = tank1.positionY + 50;
+                console.log(tank1);
+        } else if (e.keyCode === 40) { // move 50px down
+            tank1.positionY = tank1.positionY + 50;
+                console.log(tank1);
+        }
+    }
+    window.addEventListener('keydown', tank1Control);
 
-    // Player 2
+
+    /**************** Player 2 ****************/
+
     var tank2 = {
         armour: 1,
         positionX: 0,
@@ -41,35 +60,27 @@ function tanksGame() {
 
     var tanks = [tank1, tank2];
 
-        function tank1Control(e) {
-            if (e.keyCode === 39) { // move 50px right
-                tank1.positionX = tank1.positionX + 50;
-                    console.log(tank1);
-            } else if (e.keyCode === 37) { // move 50px left
-                tank1.positionX = tank1.positionX - 50;
-                    console.log(tank1);
-            } else if (e.keyCode === 38) { // move 50px top
-                tank1.positionY = tank1.positionY + 50;
-                    console.log(tank1);
-            } else if (e.keyCode === 40) { // move 50px down
-                tank1.positionY = tank1.positionY + 50;
-                    console.log(tank1);
-            }
+    function tank2Control(e) {
+        if (e.keyCode === 68) { // move 50px right
+            tank2.positionX = tank2.positionX + 50;
+                console.log(tank2);
+        } else if (e.keyCode === 65) { // move 50px left
+            tank2.positionX = tank2.positionX - 50;
+                console.log(tank2);
+        } else if (e.keyCode === 87) { // move 50px top
+            tank2.positionY = tank2.positionY + 50;
+                console.log(tank2);
+        } else if (e.keyCode === 83) { // move 50px down
+            tank2.positionY = tank2.positionY + 50;
+                console.log(tank2);
         }
-        window.addEventListener('keydown', tank1Control);
+    }
+    window.addEventListener('keydown', tank2Control);
    
+    
 
+    /**************** Buildings ****************/
 
- 
-
-
-
-
-    /*********************************************************************
-      
-            CREATE BUILDINGS FUNCTION
-
-    *********************************************************************/
 
     function createRow(startX, endX, y) {
         for (let x = startX; x <= endX; x += 50) {
