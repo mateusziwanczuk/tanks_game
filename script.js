@@ -4,94 +4,8 @@ function tanksGame() {
     const gameContainer = document.createElement('div');
     gameContainer.classList.add('game-map');
     body.prepend(gameContainer);
-
-    /**************** Player 1 ****************/
-
-    var tank1 = {
-        armour: 1,
-        positionX: 0,
-        positionY: 0,
-        createTank() {
-            const $tank1 = document.createElement('div');
-            $tank1.classList.add('tank1');
-            gameContainer.prepend($tank1);
-            this.node = $tank1;
-        },
-        node: document.querySelector('.tank1'),
-    }
-    tank1.createTank();
-
-    function tank1Control(e) {
-        if (e.keyCode === 39) { // move 50px right
-            tank1.node.style.transform = 'rotate(90deg)';
-            tank1.positionX += 50;
-            tank1.node.style.left = `${tank1.positionX}px`;
-                console.log(tank1);
-        } else if (e.keyCode === 37) { // move 50px left
-            tank1.node.style.transform = 'rotate(270deg)';
-            tank1.positionX -= 50;
-            tank1.node.style.left = `${tank1.positionX}px`;
-                console.log(tank1);
-        } else if (e.keyCode === 38) { // move 50px top
-            tank1.node.style.transform = 'rotate(0deg)';
-            tank1.positionY -= 50;
-            tank1.node.style.top = `${tank1.positionY}px`;
-                console.log(tank1);
-        } else if (e.keyCode === 40) { // move 50px down
-            tank1.node.style.transform = 'rotate(180deg)';
-            tank1.positionY += 50;
-            tank1.node.style.top = `${tank1.positionY}px`;
-                console.log(tank1);
-        }
-    }
-    window.addEventListener('keydown', tank1Control);
-
- 
-
-    /**************** Player 2 ****************/
-
-    var tank2 = {
-        armour: 1,
-        positionX: 0,
-        positionY: 0,
-        createTank() {
-            const $tank2 = document.createElement('div');
-            $tank2.classList.add('tank2');
-            gameContainer.prepend($tank2);
-            this.node = $tank2;
-        },
-        node: document.querySelector('.tank2'),
-    }
-    tank2.createTank();
-
     var tanks = [tank1, tank2];
 
-    function tank2Control(e) {
-        if (e.keyCode === 68) { // move 50px right
-            tank2.positionX += 50;
-            tank2.node.style.left = `${tank2.positionX}px`;
-            tank2.node.style.transform = 'rotate(90deg)';
-                console.log(tank2);
-        } else if (e.keyCode === 65) { // move 50px left
-            tank2.positionX -= 50;
-            tank2.node.style.left = `${tank2.positionX}px`;
-            tank2.node.style.transform = 'rotate(270deg)';
-                console.log(tank2);
-        } else if (e.keyCode === 83) { // move 50px top
-            tank2.positionY += 50;
-            tank2.node.style.top = `${tank2.positionY}px`;
-            tank2.node.style.transform = 'rotate(180deg)';
-                console.log(tank2);
-        } else if (e.keyCode === 87) { // move 50px down
-            tank2.positionY -= 50;
-            tank2.node.style.top = `${tank2.positionY}px`;
-            tank2.node.style.transform = 'rotate(360deg)';
-                console.log(tank2);
-        }
-    }
-    window.addEventListener('keydown', tank2Control);
-   
-    
 
     /**************** Buildings ****************/
 
@@ -167,9 +81,104 @@ function tanksGame() {
     buildings.forEach((building, index) => {
         buildingsPosition.push({
             building: index,
-            positionY: Number(getComputedStyle(building).getPropertyValue('top').slice(0, -2)),
-            positionX: Number(getComputedStyle(building).getPropertyValue('left').slice(0, -2)),
+            positionY: 
+                Number(getComputedStyle(building)
+                .getPropertyValue('top')
+                .slice(0, -2)),
+            positionX: 
+                Number(getComputedStyle(building)
+                .getPropertyValue('left')
+                .slice(0, -2)),
         })
     })
+    
+    
+    /**************** Player 1 ****************/
+
+    var tank1 = {
+        armour: 1,
+        positionX: 0,
+        positionY: 0,
+        createTank() {
+            const $tank1 = document.createElement('div');
+            $tank1.classList.add('tank1');
+            gameContainer.prepend($tank1);
+            this.node = $tank1;
+        },
+        node: document.querySelector('.tank1'),
+    }
+    tank1.createTank();
+
+    function tank1Control(e) {
+        if (e.keyCode === 39) { // move 50px right
+            tank1.node.style.transform = 'rotate(90deg)';
+            tank1.positionX += 50;
+            tank1.node.style.left = `${tank1.positionX}px`;
+                console.log(tank1);
+        } else if (e.keyCode === 37) { // move 50px left
+            tank1.node.style.transform = 'rotate(270deg)';
+            tank1.positionX -= 50;
+            tank1.node.style.left = `${tank1.positionX}px`;
+                console.log(tank1);
+        } else if (e.keyCode === 38) { // move 50px top
+            tank1.node.style.transform = 'rotate(0deg)';
+            tank1.positionY -= 50;
+            tank1.node.style.top = `${tank1.positionY}px`;
+                console.log(tank1);
+        } else if (e.keyCode === 40) { // move 50px down
+            tank1.node.style.transform = 'rotate(180deg)';
+            tank1.positionY += 50;
+            tank1.node.style.top = `${tank1.positionY}px`;
+                console.log(tank1);
+        }
+    }
+    window.addEventListener('keydown', tank1Control);
+
+ 
+
+    /**************** Player 2 ****************/
+
+    var tank2 = {
+        armour: 1,
+        positionX: 0,
+        positionY: 0,
+        createTank() {
+            const $tank2 = document.createElement('div');
+            $tank2.classList.add('tank2');
+            gameContainer.prepend($tank2);
+            this.node = $tank2;
+        },
+        node: document.querySelector('.tank2'),
+    }
+    tank2.createTank();
+
+    function tank2Control(e) {
+        if (e.keyCode === 68) { // move 50px right
+            tank2.positionX += 50;
+            tank2.node.style.left = `${tank2.positionX}px`;
+            tank2.node.style.transform = 'rotate(90deg)';
+                console.log(tank2);
+        } else if (e.keyCode === 65) { // move 50px left
+            tank2.positionX -= 50;
+            tank2.node.style.left = `${tank2.positionX}px`;
+            tank2.node.style.transform = 'rotate(270deg)';
+                console.log(tank2);
+        } else if (e.keyCode === 83) { // move 50px top
+            tank2.positionY += 50;
+            tank2.node.style.top = `${tank2.positionY}px`;
+            tank2.node.style.transform = 'rotate(180deg)';
+                console.log(tank2);
+        } else if (e.keyCode === 87) { // move 50px down
+            tank2.positionY -= 50;
+            tank2.node.style.top = `${tank2.positionY}px`;
+            tank2.node.style.transform = 'rotate(360deg)';
+                console.log(tank2);
+        }
+    }
+    window.addEventListener('keydown', tank2Control);
+   
+    console.log(buildingsPosition);
+    console.log(buildingsPosition[1].positionX);
+    console.log(tank1.positionX, tank1.positionY);
 };
 tanksGame();
