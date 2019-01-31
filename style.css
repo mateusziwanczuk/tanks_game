@@ -45,8 +45,8 @@
     transition: top 1s, left 1s;
 }
 
-:root {
+/* :root {
     --tankPositionX: 0px;
     --tankPositionY: 0px;
-}
+} */
 

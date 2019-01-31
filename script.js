@@ -95,7 +95,6 @@ function tanksGame() {
 
     /**************** Buildings ****************/
 
-
     function createRow(startX, endX, y) {
         for (let x = startX; x <= endX; x += 50) {
             const building = document.createElement('div');
@@ -163,5 +162,14 @@ function tanksGame() {
     createColumn(50, 150, 1050);
     createColumn(250, 350, 1150);
 
+    const buildings = document.querySelectorAll('.building');
+    let buildingsPosition = [];
+    buildings.forEach((building, index) => {
+        buildingsPosition.push({
+            building: index,
+            positionY: Number(getComputedStyle(building).getPropertyValue('top').slice(0, -2)),
+            positionX: Number(getComputedStyle(building).getPropertyValue('left').slice(0, -2)),
+        })
+    })
 };
 tanksGame();
