@@ -76,7 +76,7 @@ function tanksGame() {
     createColumn(50, 150, 1050);
     createColumn(250, 350, 1150);
 
-    const buildings = document.querySelectorAll('.building');
+    let buildings = document.querySelectorAll('.building');
     let buildingsPosition = [];
     buildings.forEach((building, index) => {
         buildingsPosition.push({
@@ -178,7 +178,5 @@ function tanksGame() {
     window.addEventListener('keydown', tank2Control);
    
     console.log(buildingsPosition);
-    console.log(buildingsPosition[1].positionX);
-    console.log(tank1.positionX, tank1.positionY);
 };
 tanksGame();
