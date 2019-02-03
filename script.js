@@ -91,7 +91,7 @@ function tanksGame() {
                 .slice(0, -2)),
         })
     })
-    
+
     
     /**************** Player 1 ****************/
 
@@ -109,8 +109,12 @@ function tanksGame() {
     }
     tank1.createTank();
 
+    let isTank1MovePossible = buildingsPosition.some(building => 
+        building.positionX === tank1.positionX + 50 &&  
+        building.positionY === tank1.positionY + 50);
+
     function tank1Control(e) {
-        if (e.keyCode === 39) { // move 50px right
+        if (e.keyCode === 39 ) { // move 50px right
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
@@ -133,7 +137,6 @@ function tanksGame() {
         }
     }
     window.addEventListener('keydown', tank1Control);
-
  
 
     /**************** Player 2 ****************/
@@ -151,6 +154,10 @@ function tanksGame() {
         node: document.querySelector('.tank2'),
     }
     tank2.createTank();
+
+    let isTank2MovePossible = buildingsPosition.some(building => 
+        building.positionX === tank2.positionX + 50 &&  
+        building.positionY === tank2.positionY + 50);
 
     function tank2Control(e) {
         if (e.keyCode === 68) { // move 50px right
@@ -176,7 +183,12 @@ function tanksGame() {
         }
     }
     window.addEventListener('keydown', tank2Control);
-   
+
+    
     console.log(buildingsPosition);
+    console.log(isTank1MovePossible);
+    console.log(isTank2MovePossible);
+
+
 };
 tanksGame();
