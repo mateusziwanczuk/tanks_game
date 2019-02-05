@@ -76,6 +76,12 @@ function tanksGame() {
     createColumn(650, 700, 50);
     createColumn(650, 700, 850);
 
+    // Off the map
+    createRow(0, 1350, -50);
+    createRow(0, 1350, 750);
+    createColumn(0, 700, -50);
+    createColumn(0, 700, 1400);
+
     let buildings = document.querySelectorAll('.building');
     let buildingsPosition = [];
     buildings.forEach((building, index) => {
