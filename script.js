@@ -113,6 +113,15 @@ function tanksGame() {
     let isSamePositionX = buildingsPosition.positionX === tank1.positionX ? true : false;
     let isSamePositionY = buildingsPosition.positionY === tank1.positionY ? true : false;
 
+    if (isSamePositionX === true) {
+        console.log('xxxx');
+    }
+
+    if (isSamePositionY === true) {
+        console.log('yyyy');
+    }
+
+
     // let isTank1MovePossible = buildingsPosition.some(building => building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY + 50);
     // console.log(isTank1MovePossible);
 
