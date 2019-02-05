@@ -110,45 +110,38 @@ function tanksGame() {
     }
     tank1.createTank();
 
-    let isSamePositionX = buildingsPosition.positionX === tank1.positionX ? true : false;
-    let isSamePositionY = buildingsPosition.positionY === tank1.positionY ? true : false;
+    let isSamePosition = buildingsPosition.positionX === tank1.positionX ? true : false;
 
-    if (isSamePositionX === true) {
-        console.log('xxxx');
+    if (isSamePosition) {
+        console.log('TANK ON THE OBSTACLE');
     }
 
-    if (isSamePositionY === true) {
-        console.log('yyyy');
-    }
-
-
-    // let isTank1MovePossible = buildingsPosition.some(building => building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY + 50);
-    // console.log(isTank1MovePossible);
-
-    function tank1Control(e) {
-        if (e.keyCode === 39 ) { // move 50px right
+    function moveTank1(e){
+        if (e.keyCode === 39 ) { // move 50 px right
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-                console.log(tank1);
-        } else if (e.keyCode === 37) { // move 50px left
+            console.log(tank1);
+        } else if (e.keyCode === 37 ) { // move 50px left
             tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
                 console.log(tank1);
-        } else if (e.keyCode === 38) { // move 50px top
+        } else if (e.keyCode === 38 ) { // move 50px top
             tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
                 console.log(tank1);
-        } else if (e.keyCode === 40) { // move 50px down
+        } else if (e.keyCode === 40 ) { // move 50px down
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
                 console.log(tank1);
         }
     }
-    window.addEventListener('keydown', tank1Control);
+
+    window.addEventListener('keydown', moveTank1);
+
  
 
     /**************** Player 2 ****************/
