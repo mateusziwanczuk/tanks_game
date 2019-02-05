@@ -18,6 +18,15 @@ function tanksGame() {
             gameContainer.append(building);
         }
     }
+    function createColumn(startY, endY, x) {
+        for (let y = startY; y <= endY; y += 50) {
+            const building = document.createElement('div');
+            building.classList.add('building');
+            building.style.setProperty('top', `${y}px`);
+            building.style.setProperty('left', `${x}px`);
+            gameContainer.append(building);
+        }
+    }
     createRow(50,50,100);
     createRow(50, 200, 100);
     createRow(100, 400, 300);
@@ -50,32 +59,22 @@ function tanksGame() {
     createRow(1250, 1350, 500);
     createRow(1250, 1350, 300);
     createRow(1250, 1350, 200);
-
-    function createColumn(startY, endY, x) {
-        for (let y = startY; y <= endY; y += 50) {
-            const building = document.createElement('div');
-            building.classList.add('building');
-            building.style.setProperty('top', `${y}px`);
-            building.style.setProperty('left', `${x}px`);
-            gameContainer.append(building);
-        }
-    }
-    createColumn(200, 300, 0);
-    createColumn(400, 550, 50);
-    createColumn(650, 700, 50);
-    createColumn(500, 700, 150);
-    createColumn(600, 650, 250);
     createColumn(0, 100, 300);
-    createColumn(550, 700, 550);
-    createColumn(200, 250, 650);
-    createColumn(200, 250, 750);
-    createColumn(650, 700, 850);
-    createColumn(150, 250, 850);
     createColumn(50, 150, 900);
-    createColumn(150, 350, 950);
-    createColumn(450, 650, 950);
     createColumn(50, 150, 1050);
+    createColumn(150, 250, 850);
+    createColumn(150, 350, 950);
+    createColumn(200, 250, 650);
+    createColumn(200, 300, 0);
+    createColumn(200, 250, 750);
     createColumn(250, 350, 1150);
+    createColumn(400, 550, 50);
+    createColumn(450, 650, 950);
+    createColumn(500, 700, 150);
+    createColumn(550, 700, 550);
+    createColumn(600, 650, 250);
+    createColumn(650, 700, 50);
+    createColumn(650, 700, 850);
 
     let buildings = document.querySelectorAll('.building');
     let buildingsPosition = [];
@@ -110,37 +109,39 @@ function tanksGame() {
     }
     tank1.createTank();
 
-    function isSamePosition() {
-        return buildingsPosition.some(building => {
-            return building.positionX === tank1.positionX && building.positionY === tank1.positionY;
-        })
-    }
-
     function moveTank1(e){
-        if (e.keyCode === 39) { // move 50 px right
+        isMoveRightBlocked = buildingsPosition.some(building => {
+            return building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY;
+        })
+        isMoveLeftBlocked = buildingsPosition.some(building => {
+            return building.positionX === tank1.positionX - 50 && building.positionY === tank1.positionY;
+        })
+        isMoveUpBlocked = buildingsPosition.some(building => {
+            return building.positionX === tank1.positionX && building.positionY === tank1.positionY - 50;
+        })
+        isMoveDownBlocked = buildingsPosition.some(building => {
+            return building.positionX === tank1.positionX && building.positionY === tank1.positionY + 50;
+        })
+        if (isMoveRightBlocked === false && e.keyCode === 39) { // move 50 px right
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-                console.log(isSamePosition());
-        } else if (e.keyCode === 37 ) { // move 50px left
+        } else if (isMoveLeftBlocked === false && e.keyCode === 37 ) { // move 50px left
             tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-                console.log(isSamePosition());
-        } else if (e.keyCode === 38 ) { // move 50px top
+        } else if (isMoveUpBlocked === false && e.keyCode === 38 ) { // move 50px top
             tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
-                console.log(isSamePosition());
-        } else if (e.keyCode === 40 ) { // move 50px down
+        } else if (isMoveDownBlocked === false && e.keyCode === 40 ) { // move 50px down
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
-                console.log(isSamePosition());
         }
     }
 
-    window.addEventListener('keydown', moveTank1);
+    window.addEventListener('keyup', moveTank1);
 
  
 
