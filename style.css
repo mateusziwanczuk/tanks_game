@@ -4,6 +4,7 @@
 }
 
 .game-map {
+    margin-top: 10px;
     background: white;
     border: 5px solid black;
     height: 750px;

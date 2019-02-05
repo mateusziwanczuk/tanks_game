@@ -76,7 +76,7 @@ function tanksGame() {
     createColumn(650, 700, 50);
     createColumn(650, 700, 850);
 
-    // Off the map
+    // Beyond the map
     createRow(0, 1350, -50);
     createRow(0, 1350, 750);
     createColumn(0, 700, -50);
@@ -116,31 +116,31 @@ function tanksGame() {
     tank1.createTank();
 
     function moveTank1(e){
-        isMoveRightBlocked = buildingsPosition.some(building => {
+        isMoveRightBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY;
         })
-        isMoveLeftBlocked = buildingsPosition.some(building => {
+        isMoveLeftBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX - 50 && building.positionY === tank1.positionY;
         })
-        isMoveUpBlocked = buildingsPosition.some(building => {
+        isMoveUpBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX && building.positionY === tank1.positionY - 50;
         })
-        isMoveDownBlocked = buildingsPosition.some(building => {
+        isMoveDownBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX && building.positionY === tank1.positionY + 50;
         })
-        if (isMoveRightBlocked === false && e.keyCode === 39) { // move 50 px right
+        if (isMoveRightBlockedTank1 === false && e.keyCode === 39) { // move 50 px right
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-        } else if (isMoveLeftBlocked === false && e.keyCode === 37 ) { // move 50px left
+        } else if (isMoveLeftBlockedTank1 === false && e.keyCode === 37 ) { // move 50px left
             tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-        } else if (isMoveUpBlocked === false && e.keyCode === 38 ) { // move 50px top
+        } else if (isMoveUpBlockedTank1 === false && e.keyCode === 38 ) { // move 50px top
             tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
-        } else if (isMoveDownBlocked === false && e.keyCode === 40 ) { // move 50px down
+        } else if (isMoveDownBlockedTank1 === false && e.keyCode === 40 ) { // move 50px down
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
@@ -149,7 +149,6 @@ function tanksGame() {
 
     window.addEventListener('keyup', moveTank1);
 
- 
 
     /**************** Player 2 ****************/
 
@@ -167,40 +166,38 @@ function tanksGame() {
     }
     tank2.createTank();
 
-    function isSamePosition2() {
-        return buildingsPosition.some(building => {
-            return building.positionX === tank2.positionX && building.positionY === tank2.positionY;
+    function moveTank2(e){
+        isMoveRightBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX + 50 && building.positionY === tank2.positionY;
         })
-    }
-    
-    function tank2Control(e) {
-        if (e.keyCode === 68) { // move 50px right
+        isMoveLeftBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX - 50 && building.positionY === tank2.positionY;
+        })
+        isMoveUpBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX && building.positionY === tank2.positionY - 50;
+        })
+        isMoveDownBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX && building.positionY === tank2.positionY + 50;
+        })
+        if (isMoveRightBlockedTank2 === false && e.keyCode === 68) { // move 50 px right
+            tank2.node.style.transform = 'rotate(90deg)';
             tank2.positionX += 50;
             tank2.node.style.left = `${tank2.positionX}px`;
-            tank2.node.style.transform = 'rotate(90deg)';
-                console.log(isSamePosition2());
-        } else if (e.keyCode === 65) { // move 50px left
+        } else if (isMoveLeftBlockedTank2 === false && e.keyCode === 65 ) { // move 50px left
+            tank2.node.style.transform = 'rotate(270deg)';
             tank2.positionX -= 50;
             tank2.node.style.left = `${tank2.positionX}px`;
-            tank2.node.style.transform = 'rotate(270deg)';
-                console.log(isSamePosition2());
-        } else if (e.keyCode === 83) { // move 50px top
-            tank2.positionY += 50;
-            tank2.node.style.top = `${tank2.positionY}px`;
-            tank2.node.style.transform = 'rotate(180deg)';
-                console.log(isSamePosition2());
-        } else if (e.keyCode === 87) { // move 50px down
+        } else if (isMoveUpBlockedTank2 === false && e.keyCode === 87 ) { // move 50px top
+            tank2.node.style.transform = 'rotate(0deg)';
             tank2.positionY -= 50;
             tank2.node.style.top = `${tank2.positionY}px`;
-            tank2.node.style.transform = 'rotate(360deg)';
-                console.log(isSamePosition2());
+        } else if (isMoveDownBlockedTank2 === false && e.keyCode === 83 ) { // move 50px down
+            tank2.node.style.transform = 'rotate(180deg)';
+            tank2.positionY += 50;
+            tank2.node.style.top = `${tank2.positionY}px`;
         }
     }
-    window.addEventListener('keydown', tank2Control);
-
-    
-    console.log(buildingsPosition);
-
+    window.addEventListener('keyup', moveTank2);
 
 };
 tanksGame();
