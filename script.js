@@ -164,10 +164,18 @@ function tanksGame() {
             gameContainer.prepend($missile);
             $missile.style.left = `${tank1.positionX}px`;
             $missile.style.top = `${tank1.positionY}px`;
-            $missilePosition = tank1.positionX;
+            $missilePositionX = tank1.positionX;
         function missileStrike() {
-            $missile.style.left = ++$missilePosition * 4 + "px";
+            const missileSpeed = 2;
+            $missile.style.left = ++$missilePositionX * missileSpeed + "px";
+            // console.log(Math.round(++$missilePositionX / 50) * 50 );
         };
+        let isBuildingHit = buildingsPosition.some(building => {
+            return Math.round(++$missilePositionX / 50) * 50 === building.positionX;
+        })
+        if (isBuildingHit) {
+            clearInterval(missileStrike);
+        }
         setInterval(missileStrike, 1);
     }
 
