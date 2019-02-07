@@ -129,19 +129,21 @@ function tanksGame() {
         isMoveDownBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX && building.positionY === tank1.positionY + 50;
         })
-        if (isMoveRightBlockedTank1 === false && e.keyCode === 39) { // move 50 px right
+        if (e.keyCode === 13 ) {
+            shoot();
+        } else if (isMoveRightBlockedTank1 === false && e.keyCode === 39) { 
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-        } else if (isMoveLeftBlockedTank1 === false && e.keyCode === 37 ) { // move 50px left
+        } else if (isMoveLeftBlockedTank1 === false && e.keyCode === 37 ) { 
             tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
-        } else if (isMoveUpBlockedTank1 === false && e.keyCode === 38 ) { // move 50px top
+        } else if (isMoveUpBlockedTank1 === false && e.keyCode === 38 ) { 
             tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
-        } else if (isMoveDownBlockedTank1 === false && e.keyCode === 40 ) { // move 50px down
+        } else if (isMoveDownBlockedTank1 === false && e.keyCode === 40 ) { 
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
@@ -151,22 +153,23 @@ function tanksGame() {
         //         gameContainer.prepend($barricade);
         //         $barricade.style.left = `${tank1.positionX}px`;
         //         $barricade.style.top = `${tank1.positionY}px`;
-        } else if (e.keyCode === 13 ) { // shoot
-            console.log('FIRE!');
-            const $missile = document.createElement('div');
-                $missile.classList.add('missile');
-                gameContainer.prepend($missile);
-                $missile.style.left = `${tank1.positionX}px`;
-                $missile.style.top = `${tank1.positionY}px`;
-                setInterval(() => {
-                    if (e.keyCode === 13) {
-                    }
-                  }, 15);
         }
     }
-
     window.addEventListener('keyup', moveTank1);
 
+    function shoot(e) {
+        console.log('FIRE!');
+        let $missile = document.createElement('div');
+            $missile.classList.add('missile');
+            gameContainer.prepend($missile);
+            $missile.style.left = `${tank1.positionX}px`;
+            $missile.style.top = `${tank1.positionY}px`;
+            $missilePosition = tank1.positionX;
+        function missileStrike() {
+            $missile.style.left = ++$missilePosition * 4 + "px";
+        };
+        setInterval(missileStrike, 1);
+    }
 
     /**************** Player 2 ****************/
 
