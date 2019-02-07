@@ -45,8 +45,10 @@
     transition: top 1s, left 1s;
 }
 
-/* :root {
-    --tankPositionX: 0px;
-    --tankPositionY: 0px;
-} */
+.missile {
+    width: 5px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+}
 

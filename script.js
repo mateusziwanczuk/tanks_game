@@ -52,8 +52,9 @@ function tanksGame() {
     createRow(1050, 1150, 450);
     createRow(1050, 1100, 350);
     createRow(1050, 1100, 250);
-    createRow(1150, 1350, 100);
-    createRow(1150, 1250, 0);
+    createRow(1150, 1350, 0); // 1st row top right
+    createRow(1150, 1350, 50); // 2nd row top right
+    createRow(1150, 1350, 100); // 3rd row top right
     createRow(1250, 1350, 600);
     createRow(1250, 1350, 400);
     createRow(1250, 1350, 500);
@@ -144,6 +145,12 @@ function tanksGame() {
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
+        } else if (e.keyCode === 13 ) { // shoot
+            console.log('FIRE!');
+            const $missile = document.createElement('div');
+                $missile.classList.add('missile');
+                var tank1Div = tank1.node; 
+                tank1Div.prepend($missile);
         }
     }
 
@@ -154,8 +161,8 @@ function tanksGame() {
 
     var tank2 = {
         armour: 1,
-        positionX: 0,
-        positionY: 0,
+        positionX: 1350,
+        positionY: 700,
         createTank() {
             const $tank2 = document.createElement('div');
             $tank2.classList.add('tank2');
@@ -165,6 +172,7 @@ function tanksGame() {
         node: document.querySelector('.tank2'),
     }
     tank2.createTank();
+
 
     function moveTank2(e){
         isMoveRightBlockedTank2 = buildingsPosition.some(building => {
