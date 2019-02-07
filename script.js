@@ -157,32 +157,30 @@ function tanksGame() {
     }
     window.addEventListener('keyup', moveTank1);
 
-    function shoot(e) {
-        console.log('FIRE!');
+    function shoot() {
         let $missile = document.createElement('div');
             $missile.classList.add('missile');
             gameContainer.prepend($missile);
             $missile.style.left = `${tank1.positionX}px`;
-            $missile.style.top = `${tank1.positionY}px`;
+            $missile.style.top = `${tank1.positionY + 20}px`;
         let $missilePositionX = tank1.positionX;
         let $missilePositionY = tank1.positionY;
-        let $missilePosition50;
-        function missileStrike() {
-            $missilePosition50 = Math.round(++$missilePositionX / 50) * 50;
-            $missile.style.left = $missilePosition50 + "px";
+        let $missilePositionEven50;
+            // TODO: sprawdzic jaka jest rotacja i wtedy wywolywac konkretne funkcje - strzal w prawo, lewo, gora, dol.
+            //       przyspieszyc pociski tak, by nie nadpisywac tank1.positionX
+            //       dodac plynne transition
+        function missileStrikeRight() {
+            $missilePositionEven50 = Math.round(++$missilePositionX / 50) * 50;
+            $missile.style.left = $missilePositionEven50 + "px";
             let isBuildingHit = buildingsPosition.some(building => {
-                return $missilePosition50 === building.positionX && building.positionY === $missilePositionY;
-            })
+                return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
+            });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit');
-
+                console.log('Building hit'); // interval is still counting...
             }
         };
-        setInterval(missileStrike, 1);
-        // if (isBuildingHit) {
-        //     clearInterval(missileStrike);
-        // }
+        setInterval(missileStrikeRight, 1);
     }
 
     /**************** Player 2 ****************/
