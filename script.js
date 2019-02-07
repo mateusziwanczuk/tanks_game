@@ -173,11 +173,16 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePosition50 === building.positionX && building.positionY === $missilePositionY;
             })
-            if (isBuildingHit) {
+            if (isBuildingHit === true) {
+                $missile.remove();
                 console.log('Building hit');
+
             }
         };
         setInterval(missileStrike, 1);
+        // if (isBuildingHit) {
+        //     clearInterval(missileStrike);
+        // }
     }
 
     /**************** Player 2 ****************/
