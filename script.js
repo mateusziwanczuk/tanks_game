@@ -145,12 +145,23 @@ function tanksGame() {
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
+        // } else if (e.keyCode === 16 ) { // barricade
+        //     const $barricade = document.createElement('div');
+        //         $barricade.classList.add('barricade');
+        //         gameContainer.prepend($barricade);
+        //         $barricade.style.left = `${tank1.positionX}px`;
+        //         $barricade.style.top = `${tank1.positionY}px`;
         } else if (e.keyCode === 13 ) { // shoot
             console.log('FIRE!');
             const $missile = document.createElement('div');
                 $missile.classList.add('missile');
-                var tank1Div = tank1.node; 
-                tank1Div.prepend($missile);
+                gameContainer.prepend($missile);
+                $missile.style.left = `${tank1.positionX}px`;
+                $missile.style.top = `${tank1.positionY}px`;
+                setInterval(() => {
+                    if (e.keyCode === 13) {
+                    }
+                  }, 15);
         }
     }
 

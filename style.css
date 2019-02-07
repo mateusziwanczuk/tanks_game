@@ -45,10 +45,18 @@
     transition: top 1s, left 1s;
 }
 
+/* .barricade {
+    position: absolute;
+    width: 10px;
+    height: 50px;
+    background: black;
+} */
+
 .missile {
-    width: 5px;
-    height: 10px;
+    position: absolute;
+    width: 10px;
+    height: 5px;
     background: black;
     border-radius: 50%;
+    z-index: 9999999;
 }
-
