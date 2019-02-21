@@ -130,7 +130,7 @@ function tanksGame() {
             return building.positionX === tank1.positionX && building.positionY === tank1.positionY + 50;
         })
         if (e.keyCode === 13 ) {
-            shoot();
+            shootTank1();
         } else if (isMoveRightBlockedTank1 === false && e.keyCode === 39) { 
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
@@ -157,8 +157,7 @@ function tanksGame() {
     }
     window.addEventListener('keyup', moveTank1);
 
-    
-    function shoot() {
+    function shootTank1() {
         let $missile = document.createElement('div');
             $missile.classList.add('missile');
             gameContainer.prepend($missile);
@@ -169,6 +168,7 @@ function tanksGame() {
         let $missilePositionEven50;
             // TODO: przyspieszyc pociski tak, by nie nadpisywac tank1.positionX
             //       dodac plynne transition
+            //       interval po trafieniu w pierwszy budynek nadal sprawdza pozostale wspolrzedne
         function missileStrikeRight() {
             $missilePositionEven50 = Math.round(++$missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
@@ -244,7 +244,6 @@ function tanksGame() {
     }
     tank2.createTank();
 
-
     function moveTank2(e){
         isMoveRightBlockedTank2 = buildingsPosition.some(building => {
             return building.positionX === tank2.positionX + 50 && building.positionY === tank2.positionY;
@@ -258,7 +257,9 @@ function tanksGame() {
         isMoveDownBlockedTank2 = buildingsPosition.some(building => {
             return building.positionX === tank2.positionX && building.positionY === tank2.positionY + 50;
         })
-        if (isMoveRightBlockedTank2 === false && e.keyCode === 68) { // move 50 px right
+        if (e.keyCode === 32 ) {
+            shootTank2();
+        } else if (isMoveRightBlockedTank2 === false && e.keyCode === 68) { // move 50 px right
             tank2.node.style.transform = 'rotate(90deg)';
             tank2.positionX += 50;
             tank2.node.style.left = `${tank2.positionX}px`;
@@ -278,5 +279,72 @@ function tanksGame() {
     }
     window.addEventListener('keyup', moveTank2);
 
+    function shootTank2() {
+        let $missile = document.createElement('div');
+            $missile.classList.add('missile');
+            gameContainer.prepend($missile);
+            $missile.style.left = `${tank2.positionX + 20}px`;
+            $missile.style.top = `${tank2.positionY + 20}px`;
+        let $missilePositionX = tank2.positionX;
+        let $missilePositionY = tank2.positionY;
+        let $missilePositionEven50;
+        function missileStrikeRight() {
+            $missilePositionEven50 = Math.round(++$missilePositionX / 50) * 50;
+            $missile.style.left = $missilePositionEven50 + "px";
+            let isBuildingHit = buildingsPosition.some(building => {
+                return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
+            });
+            if (isBuildingHit === true) {
+                $missile.remove();
+                console.log('Building hit'); // interval is still counting...
+            }
+        };
+        function missileStrikeLeft() {
+            $missilePositionEven50 = Math.round(--$missilePositionX / 50) * 50;
+            $missile.style.left = $missilePositionEven50 + "px";
+            let isBuildingHit = buildingsPosition.some(building => {
+                return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
+            });
+            if (isBuildingHit === true) {
+                $missile.remove();
+                console.log('Building hit'); // interval is still counting...
+            }
+        };
+        function missileStrikeUp() {
+            $missilePositionEven50 = Math.round(--$missilePositionY / 50) * 50;
+            $missile.style.top = $missilePositionEven50 + "px";
+            let isBuildingHit = buildingsPosition.some(building => {
+                return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
+            });
+            if (isBuildingHit === true) {
+                $missile.remove();
+                console.log('Building hit'); // interval is still counting...
+            }
+        };
+        function missileStrikeDown() {
+            $missilePositionEven50 = Math.round(++$missilePositionY / 50) * 50;
+            $missile.style.top = $missilePositionEven50 + "px";
+            let isBuildingHit = buildingsPosition.some(building => {
+                return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
+            });
+            if (isBuildingHit === true) {
+                $missile.remove();
+                console.log('Building hit'); // interval is still counting...
+            }
+        };
+
+        if (tank2.node.style.transform == 'rotate(90deg)'){
+            setInterval(missileStrikeRight, 1);
+        }
+        else if (tank2.node.style.transform == 'rotate(270deg)'){
+            setInterval(missileStrikeLeft, 1);
+        }
+        else if (tank2.node.style.transform == 'rotate(0deg)'){
+            setInterval(missileStrikeUp, 1);
+        }
+        else if (tank2.node.style.transform = 'rotate(180deg)'){
+            setInterval(missileStrikeDown, 1);
+        }
+    }
 };
 tanksGame();
