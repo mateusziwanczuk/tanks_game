@@ -106,15 +106,20 @@ function tanksGame() {
         armour: 1,
         positionX: 0,
         positionY: 0,
+        node: document.querySelector('.tank1'),
         createTank() {
             const $tank1 = document.createElement('div');
             $tank1.classList.add('tank1');
             gameContainer.prepend($tank1);
             this.node = $tank1;
         },
-        node: document.querySelector('.tank1'),
+        setStartPosition() {
+            tank1.node.style.left = `${tank1.positionX}px`;
+            tank1.node.style.top = `${tank1.positionY}px`;
+        },
     }
     tank1.createTank();
+    tank1.setStartPosition();
 
     function moveTank1(e){
         isMoveRightBlockedTank1 = buildingsPosition.some(building => {
@@ -234,15 +239,21 @@ function tanksGame() {
         armour: 1,
         positionX: 1350,
         positionY: 700,
+        node: document.querySelector('.tank2'),
         createTank() {
             const $tank2 = document.createElement('div');
             $tank2.classList.add('tank2');
             gameContainer.prepend($tank2);
             this.node = $tank2;
         },
-        node: document.querySelector('.tank2'),
+        setStartPosition() {
+            tank2.node.style.transform = 'rotate(270deg)';
+            tank2.node.style.left = `${tank2.positionX}px`;
+            tank2.node.style.top = `${tank2.positionY}px`;
+        },
     }
     tank2.createTank();
+    tank2.setStartPosition();
 
     function moveTank2(e){
         isMoveRightBlockedTank2 = buildingsPosition.some(building => {
@@ -332,7 +343,6 @@ function tanksGame() {
                 console.log('Building hit'); // interval is still counting...
             }
         };
-
         if (tank2.node.style.transform == 'rotate(90deg)'){
             setInterval(missileStrikeRight, 1);
         }
