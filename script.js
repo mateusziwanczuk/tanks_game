@@ -157,6 +157,7 @@ function tanksGame() {
     }
     window.addEventListener('keyup', moveTank1);
 
+    
     function shoot() {
         let $missile = document.createElement('div');
             $missile.classList.add('missile');
@@ -180,7 +181,30 @@ function tanksGame() {
                 console.log('Building hit'); // interval is still counting...
             }
         };
-        setInterval(missileStrikeRight, 1);
+        function missileStrikeLeft() {
+            $missilePositionEven50 = Math.round(--$missilePositionX / 50) * 50;
+            $missile.style.left = $missilePositionEven50 + "px";
+            let isBuildingHit = buildingsPosition.some(building => {
+                return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
+            });
+            if (isBuildingHit === true) {
+                $missile.remove();
+                console.log('Building hit'); // interval is still counting...
+            }
+        };
+
+        if (tank1.node.style.transform == 'rotate(90deg)'){
+            setInterval(missileStrikeRight, 1);
+        }
+        else if (tank1.node.style.transform == 'rotate(270deg)'){
+            setInterval(missileStrikeLeft, 1);
+        }
+        else if (tank1.node.style.transform == 'rotate(0deg)'){
+
+        }
+        else if (tank1.node.style.transform = 'rotate(180deg)'){
+
+        }
     }
 
     /**************** Player 2 ****************/
