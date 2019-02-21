@@ -76,12 +76,11 @@ function tanksGame() {
     createColumn(600, 650, 250);
     createColumn(650, 700, 50);
     createColumn(650, 700, 850);
-
-    // Beyond the map
-    createRow(0, 1350, -50);
-    createRow(0, 1350, 750);
-    createColumn(0, 700, -50);
-    createColumn(0, 700, 1400);
+        // Beyond the map
+        createRow(0, 1350, -50);
+        createRow(0, 1350, 750);
+        createColumn(0, 700, -50);
+        createColumn(0, 700, 1400);
 
     let buildings = document.querySelectorAll('.building');
     let buildingsPosition = [];
@@ -114,6 +113,7 @@ function tanksGame() {
             this.node = $tank1;
         },
         setStartPosition() {
+            tank1.node.style.transform = 'rotate(90deg)';
             tank1.node.style.left = `${tank1.positionX}px`;
             tank1.node.style.top = `${tank1.positionY}px`;
         },
@@ -171,9 +171,7 @@ function tanksGame() {
         let $missilePositionX = tank1.positionX;
         let $missilePositionY = tank1.positionY;
         let $missilePositionEven50;
-            // TODO: przyspieszyc pociski tak, by nie nadpisywac tank1.positionX
-            //       dodac plynne transition
-            //       interval po trafieniu w pierwszy budynek nadal sprawdza pozostale wspolrzedne
+
         function missileStrikeRight() {
             $missilePositionEven50 = Math.round(++$missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
@@ -182,7 +180,7 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeRightInterval);
             }
         };
         function missileStrikeLeft() {
@@ -193,7 +191,7 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeLeftInterval);            
             }
         };
         function missileStrikeUp() {
@@ -204,7 +202,7 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeUpInterval); 
             }
         };
         function missileStrikeDown() {
@@ -215,21 +213,21 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeDownInterval); 
             }
         };
 
         if (tank1.node.style.transform == 'rotate(90deg)'){
-            setInterval(missileStrikeRight, 1);
+            var missileStrikeRightInterval = setInterval(missileStrikeRight, 1);
         }
         else if (tank1.node.style.transform == 'rotate(270deg)'){
-            setInterval(missileStrikeLeft, 1);
+            var missileStrikeLeftInterval = setInterval(missileStrikeLeft, 1);
         }
         else if (tank1.node.style.transform == 'rotate(0deg)'){
-            setInterval(missileStrikeUp, 1);
+            var missileStrikeUpInterval = setInterval(missileStrikeUp, 1);
         }
         else if (tank1.node.style.transform = 'rotate(180deg)'){
-            setInterval(missileStrikeDown, 1);
+            var missileStrikeDownInterval = setInterval(missileStrikeDown, 1);
         }
     }
 
@@ -299,6 +297,7 @@ function tanksGame() {
         let $missilePositionX = tank2.positionX;
         let $missilePositionY = tank2.positionY;
         let $missilePositionEven50;
+
         function missileStrikeRight() {
             $missilePositionEven50 = Math.round(++$missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
@@ -307,7 +306,7 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeRightInterval);
             }
         };
         function missileStrikeLeft() {
@@ -318,7 +317,7 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeLeftInterval);
             }
         };
         function missileStrikeUp() {
@@ -329,7 +328,7 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeUpInterval);
             }
         };
         function missileStrikeDown() {
@@ -340,20 +339,20 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log('Building hit'); // interval is still counting...
+                clearInterval(missileStrikeDownInterval);
             }
         };
         if (tank2.node.style.transform == 'rotate(90deg)'){
-            setInterval(missileStrikeRight, 1);
+            var missileStrikeRightInterval = setInterval(missileStrikeRight, 1);
         }
         else if (tank2.node.style.transform == 'rotate(270deg)'){
-            setInterval(missileStrikeLeft, 1);
+            var missileStrikeLeftInterval = setInterval(missileStrikeLeft, 1);
         }
         else if (tank2.node.style.transform == 'rotate(0deg)'){
-            setInterval(missileStrikeUp, 1);
+            var missileStrikeUpInterval = setInterval(missileStrikeUp, 1);
         }
         else if (tank2.node.style.transform = 'rotate(180deg)'){
-            setInterval(missileStrikeDown, 1);
+            var missileStrikeDownInterval = setInterval(missileStrikeDown, 1);
         }
     }
 };
