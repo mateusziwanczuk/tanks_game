@@ -162,7 +162,7 @@ function tanksGame() {
         let $missile = document.createElement('div');
             $missile.classList.add('missile');
             gameContainer.prepend($missile);
-            $missile.style.left = `${tank1.positionX}px`;
+            $missile.style.left = `${tank1.positionX + 20}px`;
             $missile.style.top = `${tank1.positionY + 20}px`;
         let $missilePositionX = tank1.positionX;
         let $missilePositionY = tank1.positionY;
@@ -192,6 +192,17 @@ function tanksGame() {
                 console.log('Building hit'); // interval is still counting...
             }
         };
+        function missileStrikeUp() {
+            $missilePositionEven50 = Math.round(--$missilePositionY / 50) * 50;
+            $missile.style.top = $missilePositionEven50 + "px";
+            let isBuildingHit = buildingsPosition.some(building => {
+                return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
+            });
+            if (isBuildingHit === true) {
+                $missile.remove();
+                console.log('Building hit'); // interval is still counting...
+            }
+        };
 
         if (tank1.node.style.transform == 'rotate(90deg)'){
             setInterval(missileStrikeRight, 1);
@@ -200,7 +211,7 @@ function tanksGame() {
             setInterval(missileStrikeLeft, 1);
         }
         else if (tank1.node.style.transform == 'rotate(0deg)'){
-
+            setInterval(missileStrikeUp, 1);
         }
         else if (tank1.node.style.transform = 'rotate(180deg)'){
 
