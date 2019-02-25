@@ -10,13 +10,14 @@
 }
 
 .game-stats_player1 {
+    color: rgb(45, 112, 0);
     float: left;
     height: 100%;
     width: 500px;
 }
 
 .game-stats_player2 {
-    float: left;
+    color:rgb(145, 118, 79);
     height: 100%;
     text-align: end;
     width: 500px;
