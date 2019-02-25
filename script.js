@@ -1,4 +1,3 @@
-
 function tanksGame() {
     const mapContainer = document.querySelector('.game-map');
 
@@ -27,10 +26,10 @@ function tanksGame() {
     createRow(100, 400, 300);
     createRow(100, 300, 400);
     createRow(100, 200, 200);
+    createRow(200, 250, 0);
     createRow(250, 400, 500);
     createRow(350, 450, 700);
     createRow(350, 450, 600);
-    createRow(250, 250, 0);
     createRow(400, 600, 0);
     createRow(400, 700, 100);
     createRow(400, 600, 200);
@@ -60,7 +59,7 @@ function tanksGame() {
     createColumn(200, 250, 750);
     createColumn(250, 350, 1150);
     createColumn(400, 500, 50);
-    createColumn(450, 600, 950);
+    createColumn(450, 500, 950);
     createColumn(500, 600, 150);
     createColumn(550, 600, 550);
         // Beyond the map
@@ -168,7 +167,6 @@ function tanksGame() {
             });
             if (isBuildingHit === true) {
                 $missile.remove();
-                console.log($missilePositionX);
                 clearInterval(missileStrikeRightInterval);
             }
         };

@@ -47,7 +47,8 @@
 }
 
 .building {
-    background-color: darkgray;
+    background: url(./img/wall.png);
+    background-size: cover;
     height: 50px;
     position: absolute;
     width: 50px;
