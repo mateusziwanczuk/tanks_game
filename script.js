@@ -164,10 +164,10 @@ function tanksGame() {
             $missilePositionX += 50;
             $missilePositionEven50 = Math.round($missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
-            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
+            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
@@ -182,17 +182,17 @@ function tanksGame() {
             $missilePositionX -= 50;
             $missilePositionEven50 = Math.round(--$missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
-            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
+            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);            
             }
             if (isTankHit){
                 $missile.remove();
-                clearInterval(missileStrikeRightInterval);
+                clearInterval(missileStrikeLeftInterval);
                 console.log('BOOM');
             }
         };
@@ -200,6 +200,7 @@ function tanksGame() {
             $missilePositionY -= 50;
             $missilePositionEven50 = Math.round(--$missilePositionY / 50) * 50;
             $missile.style.top = $missilePositionEven50 + "px";
+            let isTankHit = $missilePositionEven50 === tank2.positionY && $missilePositionX === tank2.positionX;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
@@ -207,18 +208,29 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval); 
             }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeUpInterval);
+                console.log('BOOM');
+            }
             
         };
         function missileStrikeDown() {
             $missilePositionY += 50;
             $missilePositionEven50 = Math.round(++$missilePositionY / 50) * 50;
             $missile.style.top = $missilePositionEven50 + "px";
+            let isTankHit = $missilePositionEven50 === tank2.positionY && $missilePositionX === tank2.positionX;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval); 
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeDownInterval);
+                console.log('BOOM');
             }
         };
 
@@ -310,9 +322,15 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
+            let isTankHit = $missilePositionEven50 === tank1.positionX && $missilePositionY === tank1.positionY;
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeRightInterval);
+                console.log('BOOM');
             }
         };
         function missileStrikeLeft() {
@@ -322,9 +340,15 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
+            let isTankHit = $missilePositionEven50 === tank1.positionX && $missilePositionY === tank1.positionY;
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeLeftInterval);
+                console.log('BOOM');
             }
         };
         function missileStrikeUp() {
@@ -334,9 +358,15 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
+            let isTankHit = $missilePositionEven50 === tank1.positionY && $missilePositionX === tank1.positionX;
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeUpInterval);
+                console.log('BOOM');
             }
         };
         function missileStrikeDown() {
@@ -346,9 +376,15 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
+            let isTankHit = $missilePositionEven50 === tank1.positionY && $missilePositionX === tank1.positionX;
             if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeDownInterval);
+                console.log('BOOM');
             }
         };
         if (tank2.node.style.transform == 'rotate(90deg)'){
