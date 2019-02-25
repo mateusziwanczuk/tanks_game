@@ -4,10 +4,37 @@
 }
 
 .game-stats {
-    border: 1px solid black;
     height: 100px;
     margin-top: 30px;
     width: 1210px;
+}
+
+.game-stats_player1 {
+    float: left;
+    height: 100%;
+    width: 500px;
+}
+
+.game-stats_player2 {
+    float: left;
+    height: 100%;
+    text-align: end;
+    width: 500px;
+}
+
+.game-stats_score {
+    float: left;
+    height: 100%;
+    text-align: center;
+    width: 200px;
+}
+
+.game-stats_score_counter{
+    font-size: 2.5rem;
+}
+
+.game-stats_score_timer{
+    color: rgb(206, 206, 206);
 }
 
 .game-map {
