@@ -48,18 +48,12 @@ function tanksGame() {
     createRow(700, 800, 50);
     createRow(700, 850, 350);
     createRow(950, 1150, 650);
-    createRow(1050, 1150, 550);
     createRow(1050, 1150, 450);
     createRow(1050, 1100, 350);
     createRow(1050, 1100, 250);
-    createRow(1150, 1350, 0); // 1st row top right
-    createRow(1150, 1350, 50); // 2nd row top right
-    createRow(1150, 1350, 100); // 3rd row top right
-    createRow(1250, 1350, 600);
-    createRow(1250, 1350, 400);
-    createRow(1250, 1350, 500);
-    createRow(1250, 1350, 300);
-    createRow(1250, 1350, 200);
+    createRow(1150, 1200, 0); 
+    createRow(1150, 1200, 50); 
+    createRow(1150, 1200, 100); 
     createColumn(0, 100, 300);
     createColumn(50, 150, 900);
     createColumn(50, 150, 1050);
@@ -70,17 +64,14 @@ function tanksGame() {
     createColumn(200, 250, 750);
     createColumn(250, 350, 1150);
     createColumn(400, 550, 50);
-    createColumn(450, 650, 950);
-    createColumn(500, 700, 150);
-    createColumn(550, 700, 550);
-    createColumn(600, 650, 250);
-    createColumn(650, 700, 50);
-    createColumn(650, 700, 850);
+    createColumn(450, 600, 950);
+    createColumn(500, 600, 150);
+    createColumn(550, 600, 550);
         // Beyond the map
-        createRow(0, 1350, -50);
-        createRow(0, 1350, 750);
-        createColumn(0, 700, -50);
-        createColumn(0, 700, 1400);
+        createRow(0, 1200, -50);
+        createRow(0, 1200, 600);
+        createColumn(0, 550, -50);
+        createColumn(0, 550, 1200);
 
     let buildings = document.querySelectorAll('.building');
     let buildingsPosition = [];
@@ -103,8 +94,8 @@ function tanksGame() {
 
     var tank1 = {
         armour: 1,
-        positionX: 0,
-        positionY: 0,
+        positionX: 1150,
+        positionY: 550,
         node: document.querySelector('.tank1'),
         createTank() {
             const $tank1 = document.createElement('div');
@@ -113,7 +104,7 @@ function tanksGame() {
             this.node = $tank1;
         },
         setStartPosition() {
-            tank1.node.style.transform = 'rotate(90deg)';
+            tank1.node.style.transform = 'rotate(270deg)';
             tank1.node.style.left = `${tank1.positionX}px`;
             tank1.node.style.top = `${tank1.positionY}px`;
         },
@@ -240,8 +231,8 @@ function tanksGame() {
 
     var tank2 = {
         armour: 1,
-        positionX: 1350,
-        positionY: 700,
+        positionX: 0,
+        positionY: 0,
         node: document.querySelector('.tank2'),
         createTank() {
             const $tank2 = document.createElement('div');
@@ -250,7 +241,7 @@ function tanksGame() {
             this.node = $tank2;
         },
         setStartPosition() {
-            tank2.node.style.transform = 'rotate(270deg)';
+            tank2.node.style.transform = 'rotate(90deg)';
             tank2.node.style.left = `${tank2.positionX}px`;
             tank2.node.style.top = `${tank2.positionY}px`;
         },
