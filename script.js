@@ -1,11 +1,6 @@
 
 function tanksGame() {
-    const body = document.querySelector('body');
-    const gameContainer = document.createElement('div');
-    gameContainer.classList.add('game-map');
-    body.prepend(gameContainer);
-    var tanks = [tank1, tank2];
-
+    const mapContainer = document.querySelector('.game-map');
 
     /**************** Buildings ****************/
 
@@ -15,7 +10,7 @@ function tanksGame() {
             building.classList.add('building');
             building.style.setProperty('left', `${x}px`);
             building.style.setProperty('top', `${y}px`);
-            gameContainer.append(building);
+            mapContainer.append(building);
         }
     }
     function createColumn(startY, endY, x) {
@@ -24,7 +19,7 @@ function tanksGame() {
             building.classList.add('building');
             building.style.setProperty('top', `${y}px`);
             building.style.setProperty('left', `${x}px`);
-            gameContainer.append(building);
+            mapContainer.append(building);
         }
     }
     createRow(50,50,100);
@@ -100,7 +95,7 @@ function tanksGame() {
         createTank() {
             const $tank1 = document.createElement('div');
             $tank1.classList.add('tank1');
-            gameContainer.prepend($tank1);
+            mapContainer.prepend($tank1);
             this.node = $tank1;
         },
         setStartPosition() {
@@ -146,7 +141,7 @@ function tanksGame() {
         // } else if (e.keyCode === 16 ) { // barricade
         //     const $barricade = document.createElement('div');
         //         $barricade.classList.add('barricade');
-        //         gameContainer.prepend($barricade);
+        //         mapContainer.prepend($barricade);
         //         $barricade.style.left = `${tank1.positionX}px`;
         //         $barricade.style.top = `${tank1.positionY}px`;
         }
@@ -156,7 +151,7 @@ function tanksGame() {
     function shootTank1() {
         let $missile = document.createElement('div');
             $missile.classList.add('missile');
-            gameContainer.prepend($missile);
+            mapContainer.prepend($missile);
             $missile.style.left = `${tank1.positionX + 20}px`;
             $missile.style.top = `${tank1.positionY + 20}px`;
         let $missilePositionX = tank1.positionX;
@@ -237,7 +232,7 @@ function tanksGame() {
         createTank() {
             const $tank2 = document.createElement('div');
             $tank2.classList.add('tank2');
-            gameContainer.prepend($tank2);
+            mapContainer.prepend($tank2);
             this.node = $tank2;
         },
         setStartPosition() {
@@ -287,7 +282,7 @@ function tanksGame() {
     function shootTank2() {
         let $missile = document.createElement('div');
             $missile.classList.add('missile');
-            gameContainer.prepend($missile);
+            mapContainer.prepend($missile);
             $missile.style.left = `${tank2.positionX + 20}px`;
             $missile.style.top = `${tank2.positionY + 20}px`;
         let $missilePositionX = tank2.positionX;
