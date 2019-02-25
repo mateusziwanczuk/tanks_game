@@ -1,5 +1,7 @@
 function tanksGame() {
     const mapContainer = document.querySelector('.game-map');
+    let pointsPlayer1 = document.querySelector('#pointsPlayer1');
+    let pointsPlayer2 = document.querySelector('#pointsPlayer2');
 
     /**************** Buildings ****************/
 
@@ -162,24 +164,36 @@ function tanksGame() {
             $missilePositionX += 50;
             $missilePositionEven50 = Math.round($missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
+            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeRightInterval);
+                console.log('BOOM');
             }
         };
         function missileStrikeLeft() {
             $missilePositionX -= 50;
             $missilePositionEven50 = Math.round(--$missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
+            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);            
+            }
+            if (isTankHit){
+                $missile.remove();
+                clearInterval(missileStrikeRightInterval);
+                console.log('BOOM');
             }
         };
         function missileStrikeUp() {
@@ -189,10 +203,11 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval); 
             }
+            
         };
         function missileStrikeDown() {
             $missilePositionY += 50;
@@ -201,7 +216,7 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval); 
             }
@@ -295,7 +310,7 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
             }
@@ -307,7 +322,7 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
             }
@@ -319,7 +334,7 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
             }
@@ -331,7 +346,7 @@ function tanksGame() {
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionY && building.positionX === $missilePositionX;
             });
-            if (isBuildingHit === true) {
+            if (isBuildingHit) {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
             }
