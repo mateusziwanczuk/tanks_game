@@ -444,6 +444,7 @@ function tanksGame() {
 
     /**************** Repair armour ****************/
 
+    
     function createRepairIcon(x, y) {
         const repairIcon = document.createElement('div');
             repairIcon.classList.add('repairIcon');
@@ -451,6 +452,10 @@ function tanksGame() {
             repairIcon.style.setProperty('top', `${y}px`);
             mapContainer.append(repairIcon);
     }
-    createRepairIcon(50, 50);
+    createRepairIcon(
+        Math.round((Math.random(1) * 1150) / 50) * 50, 
+        Math.round((Math.random(1) * 550) / 50) * 50
+    );
+
 };
 tanksGame();
