@@ -88,7 +88,7 @@ function tanksGame() {
     /**************** Player 1 ****************/
 
     var tank1 = {
-        armour: 1,
+        armour: 5,
         positionX: 1150,
         positionY: 550,
         points: 0,
@@ -174,7 +174,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
-                ++tank1.points;
+                --tank2.armour;
+                if (tank2.armour < 0){
+                    tank2.armour = 5;
+                    ++tank1.points;
+                }
             }
         };
         function missileStrikeLeft() {
@@ -192,7 +196,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
-                ++tank1.points;
+                --tank2.armour;
+                if (tank2.armour < 0){
+                    tank2.armour = 5;
+                    ++tank1.points;
+                }
             }
         };
         function missileStrikeUp() {
@@ -210,7 +218,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
-                ++tank1.points;
+                --tank2.armour;
+                if (tank2.armour < 0){
+                    tank2.armour = 5;
+                    ++tank1.points;
+                }
             }
             
         };
@@ -229,7 +241,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
-                ++tank1.points;
+                --tank2.armour;
+                if (tank2.armour < 0){
+                    tank2.armour = 5;
+                    ++tank1.points;
+                }
             }
         };
 
@@ -253,7 +269,7 @@ function tanksGame() {
     /**************** Player 2 ****************/
 
     var tank2 = {
-        armour: 1,
+        armour: 5,
         positionX: 0,
         positionY: 0,
         points: 0,
@@ -333,7 +349,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
-                ++tank2.points;
+                --tank1.armour;
+                if (tank1.armour < 0){
+                    tank1.armour = 5;
+                    ++tank2.points;
+                }
             }
         };
         function missileStrikeLeft() {
@@ -351,7 +371,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
-                ++tank2.points;
+                --tank1.armour;
+                if (tank1.armour < 0){
+                    tank1.armour = 5;
+                    ++tank2.points;
+                }
             }
         };
         function missileStrikeUp() {
@@ -369,7 +393,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
-                ++tank2.points;
+                --tank1.armour;
+                if (tank1.armour < 0){
+                    tank1.armour = 5;
+                    ++tank2.points;
+                }
             }
         };
         function missileStrikeDown() {
@@ -387,7 +415,11 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
-                ++tank2.points;
+                --tank1.armour;
+                if (tank1.armour < 0){
+                    tank1.armour = 5;
+                    ++tank2.points;
+                }
             }
         };
 
