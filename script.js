@@ -444,18 +444,24 @@ function tanksGame() {
 
     /**************** Repair armour ****************/
 
-    
+    let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
+    let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
+
     function createRepairIcon(x, y) {
         const repairIcon = document.createElement('div');
             repairIcon.classList.add('repairIcon');
             repairIcon.style.setProperty('left', `${x}px`);
             repairIcon.style.setProperty('top', `${y}px`);
             mapContainer.append(repairIcon);
-    }
-    createRepairIcon(
-        Math.round((Math.random(1) * 1150) / 50) * 50, 
-        Math.round((Math.random(1) * 550) / 50) * 50
-    );
+    } 
+    createRepairIcon(randomIconPositionX,randomIconPositionY);
+
+    isIconOnBuilding = buildingsPosition.some(building => {
+        return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
+    })
+
+    console.log(randomIconPositionX, randomIconPositionY);
+    console.log(isIconOnBuilding);
 
 };
 tanksGame();
