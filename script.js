@@ -1,7 +1,5 @@
 function tanksGame() {
     const mapContainer = document.querySelector('.game-map');
-    let pointsPlayer1 = document.querySelector('#pointsPlayer1');
-    let pointsPlayer2 = document.querySelector('#pointsPlayer2');
 
     /**************** Buildings ****************/
 
@@ -93,6 +91,7 @@ function tanksGame() {
         armour: 1,
         positionX: 1150,
         positionY: 550,
+        points: 0,
         node: document.querySelector('.tank1'),
         createTank() {
             const $tank1 = document.createElement('div');
@@ -175,7 +174,7 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
-                console.log('BOOM');
+                ++tank1.points;
             }
         };
         function missileStrikeLeft() {
@@ -193,7 +192,7 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
-                console.log('BOOM');
+                ++tank1.points;
             }
         };
         function missileStrikeUp() {
@@ -211,7 +210,7 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
-                console.log('BOOM');
+                ++tank1.points;
             }
             
         };
@@ -230,9 +229,12 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
-                console.log('BOOM');
+                ++tank1.points;
             }
         };
+
+        let pointsPlayer1 = document.querySelector('#pointsPlayer1');
+        pointsPlayer1.innerHTML= `${tank1.points}`;
 
         if (tank1.node.style.transform == 'rotate(90deg)'){
             var missileStrikeRightInterval = setInterval(missileStrikeRight, 10);
@@ -254,6 +256,7 @@ function tanksGame() {
         armour: 1,
         positionX: 0,
         positionY: 0,
+        points: 0,
         node: document.querySelector('.tank2'),
         createTank() {
             const $tank2 = document.createElement('div');
@@ -330,7 +333,7 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
-                console.log('BOOM');
+                ++tank2.points;
             }
         };
         function missileStrikeLeft() {
@@ -348,7 +351,7 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
-                console.log('BOOM');
+                ++tank2.points;
             }
         };
         function missileStrikeUp() {
@@ -366,7 +369,7 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
-                console.log('BOOM');
+                ++tank2.points;
             }
         };
         function missileStrikeDown() {
@@ -384,9 +387,13 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
-                console.log('BOOM');
+                ++tank2.points;
             }
         };
+
+        let pointsPlayer2 = document.querySelector('#pointsPlayer2');
+        pointsPlayer2.innerHTML=`${tank2.points}`;
+
         if (tank2.node.style.transform == 'rotate(90deg)'){
             var missileStrikeRightInterval = setInterval(missileStrikeRight, 10);
         }
