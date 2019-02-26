@@ -440,5 +440,17 @@ function tanksGame() {
             var missileStrikeDownInterval = setInterval(missileStrikeDown, 10);
         }
     }
+
+
+    /**************** Repair armour ****************/
+
+    function createRepairIcon(x, y) {
+        const repairIcon = document.createElement('div');
+            repairIcon.classList.add('repairIcon');
+            repairIcon.style.setProperty('left', `${x}px`);
+            repairIcon.style.setProperty('top', `${y}px`);
+            mapContainer.append(repairIcon);
+    }
+    createRepairIcon(50, 50);
 };
 tanksGame();
