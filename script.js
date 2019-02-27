@@ -5,6 +5,8 @@ function tanksGame() {
     let armourPlayer1 = document.querySelector('#armourPlayer1');
     let armourPlayer2 = document.querySelector('#armourPlayer2');
 
+
+
     /**************** Buildings ****************/
 
     function createRow(startX, endX, y) {
@@ -175,6 +177,10 @@ function tanksGame() {
                 clearInterval(missileStrikeRightInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer2.innerHTML = `${tank2.armour}`;
+                if (tank2.armour < 0){
+                    ++tank1.points;
+                    pointsPlayer1.innerHTML = `${tank1.points}`;
+                }
             }
         };
         function missileStrikeLeft() {
@@ -194,6 +200,10 @@ function tanksGame() {
                 clearInterval(missileStrikeLeftInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer2.innerHTML = `${tank2.armour}`;
+                if (tank2.armour < 0){
+                    ++tank1.points;
+                    pointsPlayer1.innerHTML = `${tank1.points}`;
+                }
             }
         };
         function missileStrikeUp() {
@@ -213,6 +223,10 @@ function tanksGame() {
                 clearInterval(missileStrikeUpInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer2.innerHTML = `${tank2.armour}`;
+                if (tank2.armour < 0){
+                    ++tank1.points;
+                    pointsPlayer1.innerHTML = `${tank1.points}`;
+                }
             }
         };
         function missileStrikeDown() {
@@ -232,6 +246,10 @@ function tanksGame() {
                 clearInterval(missileStrikeDownInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer2.innerHTML = `${tank2.armour}`;
+                if (tank2.armour < 0){
+                    ++tank1.points;
+                    pointsPlayer1.innerHTML = `${tank1.points}`;
+                }
             }
         };
 
@@ -342,6 +360,10 @@ function tanksGame() {
                 clearInterval(missileStrikeRightInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer1.innerHTML = `${tank1.armour}`;
+                if (tank1.armour < 0){
+                    ++tank2.points;
+                    pointsPlayer2.innerHTML = `${tank2.points}`;
+                }
             }
         };
         function missileStrikeLeft() {
@@ -361,6 +383,10 @@ function tanksGame() {
                 clearInterval(missileStrikeLeftInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer1.innerHTML = `${tank1.armour}`;
+                if (tank1.armour < 0){
+                    ++tank2.points;
+                    pointsPlayer2.innerHTML = `${tank2.points}`;
+                }
             }
         };
         function missileStrikeUp() {
@@ -380,6 +406,10 @@ function tanksGame() {
                 clearInterval(missileStrikeUpInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer1.innerHTML = `${tank1.armour}`;
+                if (tank1.armour < 0){
+                    ++tank2.points;
+                    pointsPlayer2.innerHTML = `${tank2.points}`;
+                }
             }
             
         };
@@ -400,6 +430,10 @@ function tanksGame() {
                 clearInterval(missileStrikeDownInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
                 armourPlayer1.innerHTML = `${tank1.armour}`;
+                if (tank1.armour < 0){
+                    ++tank2.points;
+                    pointsPlayer2.innerHTML = `${tank2.points}`;
+                }
             }
         };
 
