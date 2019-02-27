@@ -1,5 +1,9 @@
 function tanksGame() {
     const mapContainer = document.querySelector('.game-map');
+    let pointsPlayer1 = document.querySelector('#pointsPlayer1');
+    let pointsPlayer2 = document.querySelector('#pointsPlayer2');
+    let armourPlayer1 = document.querySelector('#armourPlayer1');
+    let armourPlayer2 = document.querySelector('#armourPlayer2');
 
     /**************** Buildings ****************/
 
@@ -107,6 +111,7 @@ function tanksGame() {
     }
     tank1.createTank();
     tank1.setStartPosition();
+    pointsPlayer1.innerHTML = `${tank1.points}`;
 
     function moveTank1(e){
         isMoveRightBlockedTank1 = buildingsPosition.some(building => {
@@ -169,10 +174,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                if (tank2.armour < 0){
-                    tank2.armour = 100;
-                    ++tank1.points;
-                }
+                armourPlayer2.innerHTML=`${tank2.armour}`;
             }
         };
         function missileStrikeLeft() {
@@ -191,10 +193,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                if (tank2.armour < 0){
-                    tank2.armour = 100;
-                    ++tank1.points;
-                }
+                armourPlayer2.innerHTML=`${tank2.armour}`;
             }
         };
         function missileStrikeUp() {
@@ -213,10 +212,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                if (tank2.armour < 0){
-                    tank2.armour = 100;
-                    ++tank1.points;
-                }
+                armourPlayer2.innerHTML=`${tank2.armour}`;
             }
         };
         function missileStrikeDown() {
@@ -235,18 +231,9 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                if (tank2.armour < 0){
-                    tank2.armour = 100;
-                    ++tank1.points;
-                }
+                armourPlayer2.innerHTML=`${tank2.armour}`;
             }
         };
-
-        let pointsPlayer1 = document.querySelector('#pointsPlayer1');
-        pointsPlayer1.innerHTML=`${tank1.points}`;
-
-        let armourPlayer1 = document.querySelector('#armourPlayer1');
-        armourPlayer1.innerHTML=`${tank1.armour}`;
 
         if (tank1.node.style.transform == 'rotate(90deg)'){
             var missileStrikeRightInterval = setInterval(missileStrikeRight, 10);
@@ -285,6 +272,7 @@ function tanksGame() {
     }
     tank2.createTank();
     tank2.setStartPosition();
+    pointsPlayer2.innerHTML = `${tank2.points}`;
 
     function moveTank2(e){
         isMoveRightBlockedTank2 = buildingsPosition.some(building => {
@@ -353,10 +341,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
-                if (tank1.armour < 0){
-                    tank1.armour = 100;
-                    ++tank2.points;
-                }
+                armourPlayer1.innerHTML = `${tank1.armour}`;
             }
         };
         function missileStrikeLeft() {
@@ -375,10 +360,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
-                if (tank1.armour < 0){
-                    tank1.armour = 100;
-                    ++tank2.points;
-                }
+                armourPlayer1.innerHTML = `${tank1.armour}`;
             }
         };
         function missileStrikeUp() {
@@ -397,10 +379,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
-                if (tank1.armour < 0){
-                    tank1.armour = 100;
-                    ++tank2.points;
-                }
+                armourPlayer1.innerHTML = `${tank1.armour}`;
             }
             
         };
@@ -420,18 +399,9 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
                 tank1.armour -= (Math.random(1) * 50).toFixed();
-                if (tank1.armour < 0){
-                    tank1.armour = 100;
-                    ++tank2.points;
-                }
+                armourPlayer1.innerHTML = `${tank1.armour}`;
             }
         };
-
-        let pointsPlayer2 = document.querySelector('#pointsPlayer2');
-        pointsPlayer2.innerHTML= `${tank2.points}`;
-
-        let armourPlayer2 = document.querySelector('#armourPlayer2');
-        armourPlayer2.innerHTML=`${tank2.armour}`;
 
         if (tank2.node.style.transform == 'rotate(90deg)'){
             var missileStrikeRightInterval = setInterval(missileStrikeRight, 10);
@@ -466,6 +436,6 @@ function tanksGame() {
     } 
     createRepairIcon(randomIconPositionX,randomIconPositionY);
 
-};
 
+};
 tanksGame();
