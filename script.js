@@ -258,6 +258,9 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.positionX = 1150;
+                    tank2.positionY = 550;
+                    tank2.setStartPosition();
                 }
             }
         };
@@ -283,6 +286,9 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.positionX = 1150;
+                    tank2.positionY = 550;
+                    tank2.setStartPosition();
                 }
             }
         };
@@ -308,6 +314,9 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.positionX = 1150;
+                    tank2.positionY = 550;
+                    tank2.setStartPosition();
                 }
             }
         };
@@ -333,6 +342,9 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.positionX = 1150;
+                    tank2.positionY = 550;
+                    tank2.setStartPosition();
                 }
             }
         };
@@ -383,6 +395,9 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.positionX = 0;
+                    tank1.positionY = 0;
+                    tank1.setStartPosition();
                 }
             }
         };
@@ -408,6 +423,9 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.positionX = 0;
+                    tank1.positionY = 0;
+                    tank1.setStartPosition();
                 }
             }
         };
@@ -433,6 +451,9 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.positionX = 0;
+                    tank1.positionY = 0;
+                    tank1.setStartPosition();
                 }
             }
             
@@ -459,6 +480,9 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.positionX = 0;
+                    tank1.positionY = 0;
+                    tank1.setStartPosition();
                 }
             }
         };
