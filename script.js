@@ -419,22 +419,19 @@ function tanksGame() {
 
     /**************** Repair armour ****************/
 
-    let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
-    let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
-    
-    isIconOnBuilding = buildingsPosition.some(building => {
-        return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
-    })
-
     function createRepairIcon() {
+        let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
+        let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
+        // isIconOnBuilding = buildingsPosition.some(building => {
+        //     return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
+        // })
         const repairIcon = document.createElement('div');
             repairIcon.classList.add('repairIcon');
             repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
             repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
             mapContainer.append(repairIcon);
     } 
-    createRepairIcon();
-    // setInterval(createRepairIcon, 2000);
+    setInterval(createRepairIcon, 30000);
 
 };
 tanksGame();
