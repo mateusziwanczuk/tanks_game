@@ -52,16 +52,18 @@
     height: 50px;
     position: absolute;
     width: 50px;
+    z-index: 2;
 }
 
 .repairIcon {
+    animation: rotateRepairIcon 5s linear infinite;
     background: url(./img/repair.png);
     background-size: cover;
     height: 24px;
+    margin: 13px 0 0 13px;
     position: absolute;
     width: 24px;
-    margin: 13px 0 0 13px;
-    animation: rotateRepairIcon 5s linear infinite;
+    z-index: 1;
 }
     @keyframes rotateRepairIcon {
         from { transform: rotateY(0deg) }

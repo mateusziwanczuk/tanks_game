@@ -174,7 +174,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                armourPlayer2.innerHTML=`${tank2.armour}`;
+                armourPlayer2.innerHTML = `${tank2.armour}`;
             }
         };
         function missileStrikeLeft() {
@@ -193,7 +193,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                armourPlayer2.innerHTML=`${tank2.armour}`;
+                armourPlayer2.innerHTML = `${tank2.armour}`;
             }
         };
         function missileStrikeUp() {
@@ -212,7 +212,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                armourPlayer2.innerHTML=`${tank2.armour}`;
+                armourPlayer2.innerHTML = `${tank2.armour}`;
             }
         };
         function missileStrikeDown() {
@@ -231,7 +231,7 @@ function tanksGame() {
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
                 tank2.armour -= (Math.random(1) * 50).toFixed();
-                armourPlayer2.innerHTML=`${tank2.armour}`;
+                armourPlayer2.innerHTML = `${tank2.armour}`;
             }
         };
 
@@ -417,7 +417,6 @@ function tanksGame() {
         }
     }
 
-
     /**************** Repair armour ****************/
 
     let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
@@ -427,15 +426,15 @@ function tanksGame() {
         return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
     })
 
-    function createRepairIcon(x, y) {
+    function createRepairIcon() {
         const repairIcon = document.createElement('div');
             repairIcon.classList.add('repairIcon');
-            repairIcon.style.setProperty('left', `${x}px`);
-            repairIcon.style.setProperty('top', `${y}px`);
+            repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
+            repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
             mapContainer.append(repairIcon);
     } 
-    createRepairIcon(randomIconPositionX,randomIconPositionY);
-
+    createRepairIcon();
+    // setInterval(createRepairIcon, 2000);
 
 };
 tanksGame();
