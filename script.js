@@ -6,8 +6,9 @@ function tanksGame() {
     let armourPlayer2 = document.querySelector('#armourPlayer2');
 
 
-
-    /**************** Buildings ****************/
+    /***********************************************************************************************************/
+    /************************************************ Buildings ************************************************/
+    /***********************************************************************************************************/
 
     function createRow(startX, endX, y) {
         for (let x = startX; x <= endX; x += 50) {
@@ -90,8 +91,10 @@ function tanksGame() {
         })
     })
 
-    
-    /**************** Create tanks ****************/
+
+    /**************************************************************************************************************/
+    /************************************************ Create tanks ************************************************/
+    /**************************************************************************************************************/
 
     var tank1 = {
         armour: 100,
@@ -138,7 +141,9 @@ function tanksGame() {
     pointsPlayer2.innerHTML = `${tank2.points}`;
 
 
-    /**************** Tanks control ****************/
+    /***************************************************************************************************************/
+    /************************************************ Tanks control ************************************************/
+    /***************************************************************************************************************/
 
     function moveTank1(e){
         isMoveRightBlockedTank1 = buildingsPosition.some(building => {
@@ -217,7 +222,9 @@ function tanksGame() {
     window.addEventListener('keyup', moveTank2);
 
 
-    /**************** Shooting ****************/
+    /**********************************************************************************************************/
+    /************************************************ Shooting ************************************************/
+    /**********************************************************************************************************/
 
     function shootTank1() {
         let $missile = document.createElement('div');
@@ -249,6 +256,8 @@ function tanksGame() {
                 if (tank2.armour < 0){
                     ++tank1.points;
                     pointsPlayer1.innerHTML = `${tank1.points}`;
+                    tank2.armour = 100;
+                    armourPlayer2.innerHTML = `${tank2.armour}`;
                 }
             }
         };
@@ -272,6 +281,8 @@ function tanksGame() {
                 if (tank2.armour < 0){
                     ++tank1.points;
                     pointsPlayer1.innerHTML = `${tank1.points}`;
+                    tank2.armour = 100;
+                    armourPlayer2.innerHTML = `${tank2.armour}`;
                 }
             }
         };
@@ -295,6 +306,8 @@ function tanksGame() {
                 if (tank2.armour < 0){
                     ++tank1.points;
                     pointsPlayer1.innerHTML = `${tank1.points}`;
+                    tank2.armour = 100;
+                    armourPlayer2.innerHTML = `${tank2.armour}`;
                 }
             }
         };
@@ -318,6 +331,8 @@ function tanksGame() {
                 if (tank2.armour < 0){
                     ++tank1.points;
                     pointsPlayer1.innerHTML = `${tank1.points}`;
+                    tank2.armour = 100;
+                    armourPlayer2.innerHTML = `${tank2.armour}`;
                 }
             }
         };
@@ -366,6 +381,8 @@ function tanksGame() {
                 if (tank1.armour < 0){
                     ++tank2.points;
                     pointsPlayer2.innerHTML = `${tank2.points}`;
+                    tank1.armour = 100;
+                    armourPlayer1.innerHTML = `${tank1.armour}`;
                 }
             }
         };
@@ -389,6 +406,8 @@ function tanksGame() {
                 if (tank1.armour < 0){
                     ++tank2.points;
                     pointsPlayer2.innerHTML = `${tank2.points}`;
+                    tank1.armour = 100;
+                    armourPlayer1.innerHTML = `${tank1.armour}`;
                 }
             }
         };
@@ -412,6 +431,8 @@ function tanksGame() {
                 if (tank1.armour < 0){
                     ++tank2.points;
                     pointsPlayer2.innerHTML = `${tank2.points}`;
+                    tank1.armour = 100;
+                    armourPlayer1.innerHTML = `${tank1.armour}`;
                 }
             }
             
@@ -436,6 +457,8 @@ function tanksGame() {
                 if (tank1.armour < 0){
                     ++tank2.points;
                     pointsPlayer2.innerHTML = `${tank2.points}`;
+                    tank1.armour = 100;
+                    armourPlayer1.innerHTML = `${tank1.armour}`;
                 }
             }
         };
@@ -454,7 +477,10 @@ function tanksGame() {
         }
     }
 
-    /**************** Repair armour ****************/
+
+    /***************************************************************************************************************/
+    /************************************************ Repair armour ************************************************/
+    /***************************************************************************************************************/
 
     function createRepairIcon() {
         let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
