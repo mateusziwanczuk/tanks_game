@@ -88,7 +88,7 @@ function tanksGame() {
     /**************** Player 1 ****************/
 
     var tank1 = {
-        armour: 5,
+        armour: 100,
         positionX: 0,
         positionY: 0,
         points: 0,
@@ -168,9 +168,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
-                --tank2.armour;
+                tank2.armour -= (Math.random(1) * 50).toFixed();
                 if (tank2.armour < 0){
-                    tank2.armour = 5;
+                    tank2.armour = 100;
                     ++tank1.points;
                 }
             }
@@ -190,9 +190,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
-                --tank2.armour;
+                tank2.armour -= (Math.random(1) * 50).toFixed();
                 if (tank2.armour < 0){
-                    tank2.armour = 5;
+                    tank2.armour = 100;
                     ++tank1.points;
                 }
             }
@@ -212,9 +212,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
-                --tank2.armour;
+                tank2.armour -= (Math.random(1) * 50).toFixed();
                 if (tank2.armour < 0){
-                    tank2.armour = 5;
+                    tank2.armour = 100;
                     ++tank1.points;
                 }
             }
@@ -234,9 +234,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
-                --tank2.armour;
+                tank2.armour -= (Math.random(1) * 50).toFixed();
                 if (tank2.armour < 0){
-                    tank2.armour = 5;
+                    tank2.armour = 100;
                     ++tank1.points;
                 }
             }
@@ -244,6 +244,9 @@ function tanksGame() {
 
         let pointsPlayer1 = document.querySelector('#pointsPlayer1');
         pointsPlayer1.innerHTML=`${tank1.points}`;
+
+        let armourPlayer1 = document.querySelector('#armourPlayer1');
+        armourPlayer1.innerHTML=`${tank1.armour}`;
 
         if (tank1.node.style.transform == 'rotate(90deg)'){
             var missileStrikeRightInterval = setInterval(missileStrikeRight, 10);
@@ -263,7 +266,7 @@ function tanksGame() {
     /**************** Player 2 ****************/
 
     var tank2 = {
-        armour: 5,
+        armour: 100,
         positionX: 1150,
         positionY: 550,
         points: 0,
@@ -349,9 +352,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
-                --tank1.armour;
+                tank1.armour -= (Math.random(1) * 50).toFixed();
                 if (tank1.armour < 0){
-                    tank1.armour = 5;
+                    tank1.armour = 100;
                     ++tank2.points;
                 }
             }
@@ -371,9 +374,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeLeftInterval);
-                --tank1.armour;
+                tank1.armour -= (Math.random(1) * 50).toFixed();
                 if (tank1.armour < 0){
-                    tank1.armour = 5;
+                    tank1.armour = 100;
                     ++tank2.points;
                 }
             }
@@ -393,9 +396,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeUpInterval);
-                --tank1.armour;
+                tank1.armour -= (Math.random(1) * 50).toFixed();
                 if (tank1.armour < 0){
-                    tank1.armour = 5;
+                    tank1.armour = 100;
                     ++tank2.points;
                 }
             }
@@ -416,9 +419,9 @@ function tanksGame() {
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeDownInterval);
-                --tank1.armour;
+                tank1.armour -= (Math.random(1) * 50).toFixed();
                 if (tank1.armour < 0){
-                    tank1.armour = 5;
+                    tank1.armour = 100;
                     ++tank2.points;
                 }
             }
@@ -426,6 +429,9 @@ function tanksGame() {
 
         let pointsPlayer2 = document.querySelector('#pointsPlayer2');
         pointsPlayer2.innerHTML= `${tank2.points}`;
+
+        let armourPlayer2 = document.querySelector('#armourPlayer2');
+        armourPlayer2.innerHTML=`${tank2.armour}`;
 
         if (tank2.node.style.transform == 'rotate(90deg)'){
             var missileStrikeRightInterval = setInterval(missileStrikeRight, 10);
@@ -446,6 +452,10 @@ function tanksGame() {
 
     let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
     let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
+    
+    isIconOnBuilding = buildingsPosition.some(building => {
+        return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
+    })
 
     function createRepairIcon(x, y) {
         const repairIcon = document.createElement('div');
@@ -456,12 +466,6 @@ function tanksGame() {
     } 
     createRepairIcon(randomIconPositionX,randomIconPositionY);
 
-    isIconOnBuilding = buildingsPosition.some(building => {
-        return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
-    })
-
-    console.log(randomIconPositionX, randomIconPositionY);
-    console.log(isIconOnBuilding);
-
 };
+
 tanksGame();
