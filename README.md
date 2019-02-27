@@ -1,8 +1,8 @@
 Tanks Game. Copyrights: Mateusz Iwanczuk
 https://github.com/mateusziwanczuk
 
-This is the project I'm working with. 
-The game is wrote in Javascript. 
+GHPages:
+https://mateusziwanczuk.github.io/tanks_game/
 
 Gameplay:
 - Shoot to your opponent,
