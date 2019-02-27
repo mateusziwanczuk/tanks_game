@@ -91,7 +91,7 @@ function tanksGame() {
     })
 
     
-    /**************** Player 1 ****************/
+    /**************** Create tanks ****************/
 
     var tank1 = {
         armour: 100,
@@ -114,6 +114,31 @@ function tanksGame() {
     tank1.createTank();
     tank1.setStartPosition();
     pointsPlayer1.innerHTML = `${tank1.points}`;
+
+    var tank2 = {
+        armour: 100,
+        positionX: 1150,
+        positionY: 550,
+        points: 0,
+        node: document.querySelector('.tank2'),
+        createTank() {
+            const $tank2 = document.createElement('div');
+            $tank2.classList.add('tank2');
+            mapContainer.prepend($tank2);
+            this.node = $tank2;
+        },
+        setStartPosition() {
+            tank2.node.style.transform = 'rotate(270deg)';
+            tank2.node.style.left = `${tank2.positionX}px`;
+            tank2.node.style.top = `${tank2.positionY}px`;
+        },
+    }
+    tank2.createTank();
+    tank2.setStartPosition();
+    pointsPlayer2.innerHTML = `${tank2.points}`;
+
+
+    /**************** Tanks control ****************/
 
     function moveTank1(e){
         isMoveRightBlockedTank1 = buildingsPosition.some(building => {
@@ -149,6 +174,50 @@ function tanksGame() {
         }
     }
     window.addEventListener('keyup', moveTank1);
+
+    function moveTank2(e){
+        isMoveRightBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX + 50 && building.positionY === tank2.positionY;
+        })
+        isMoveLeftBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX - 50 && building.positionY === tank2.positionY;
+        })
+        isMoveUpBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX && building.positionY === tank2.positionY - 50;
+        })
+        isMoveDownBlockedTank2 = buildingsPosition.some(building => {
+            return building.positionX === tank2.positionX && building.positionY === tank2.positionY + 50;
+        })
+        if (e.keyCode === 13 ) {
+            shootTank2();
+        } else if (isMoveRightBlockedTank2 === false && e.keyCode === 39) { 
+            tank2.node.style.transform = 'rotate(90deg)';
+            tank2.positionX += 50;
+            tank2.node.style.left = `${tank2.positionX}px`;
+        } else if (isMoveLeftBlockedTank2 === false && e.keyCode === 37 ) { 
+            tank2.node.style.transform = 'rotate(270deg)';
+            tank2.positionX -= 50;
+            tank2.node.style.left = `${tank2.positionX}px`;
+        } else if (isMoveUpBlockedTank2 === false && e.keyCode === 38 ) { 
+            tank2.node.style.transform = 'rotate(0deg)';
+            tank2.positionY -= 50;
+            tank2.node.style.top = `${tank2.positionY}px`;
+        } else if (isMoveDownBlockedTank2 === false && e.keyCode === 40 ) { 
+            tank2.node.style.transform = 'rotate(180deg)';
+            tank2.positionY += 50;
+            tank2.node.style.top = `${tank2.positionY}px`;
+        // } else if (e.keyCode === 16 ) { // barricade
+        //     const $barricade = document.createElement('div');
+        //         $barricade.classList.add('barricade');
+        //         mapContainer.prepend($barricade);
+        //         $barricade.style.left = `${tank2.positionX}px`;
+        //         $barricade.style.top = `${tank2.positionY}px`;
+        }
+    }
+    window.addEventListener('keyup', moveTank2);
+
+
+    /**************** Shooting ****************/
 
     function shootTank1() {
         let $missile = document.createElement('div');
@@ -266,72 +335,6 @@ function tanksGame() {
             var missileStrikeDownInterval = setInterval(missileStrikeDown, 10);
         }
     }
-
-
-    /**************** Player 2 ****************/
-
-    var tank2 = {
-        armour: 100,
-        positionX: 1150,
-        positionY: 550,
-        points: 0,
-        node: document.querySelector('.tank2'),
-        createTank() {
-            const $tank2 = document.createElement('div');
-            $tank2.classList.add('tank2');
-            mapContainer.prepend($tank2);
-            this.node = $tank2;
-        },
-        setStartPosition() {
-            tank2.node.style.transform = 'rotate(270deg)';
-            tank2.node.style.left = `${tank2.positionX}px`;
-            tank2.node.style.top = `${tank2.positionY}px`;
-        },
-    }
-    tank2.createTank();
-    tank2.setStartPosition();
-    pointsPlayer2.innerHTML = `${tank2.points}`;
-
-    function moveTank2(e){
-        isMoveRightBlockedTank2 = buildingsPosition.some(building => {
-            return building.positionX === tank2.positionX + 50 && building.positionY === tank2.positionY;
-        })
-        isMoveLeftBlockedTank2 = buildingsPosition.some(building => {
-            return building.positionX === tank2.positionX - 50 && building.positionY === tank2.positionY;
-        })
-        isMoveUpBlockedTank2 = buildingsPosition.some(building => {
-            return building.positionX === tank2.positionX && building.positionY === tank2.positionY - 50;
-        })
-        isMoveDownBlockedTank2 = buildingsPosition.some(building => {
-            return building.positionX === tank2.positionX && building.positionY === tank2.positionY + 50;
-        })
-        if (e.keyCode === 13 ) {
-            shootTank2();
-        } else if (isMoveRightBlockedTank2 === false && e.keyCode === 39) { 
-            tank2.node.style.transform = 'rotate(90deg)';
-            tank2.positionX += 50;
-            tank2.node.style.left = `${tank2.positionX}px`;
-        } else if (isMoveLeftBlockedTank2 === false && e.keyCode === 37 ) { 
-            tank2.node.style.transform = 'rotate(270deg)';
-            tank2.positionX -= 50;
-            tank2.node.style.left = `${tank2.positionX}px`;
-        } else if (isMoveUpBlockedTank2 === false && e.keyCode === 38 ) { 
-            tank2.node.style.transform = 'rotate(0deg)';
-            tank2.positionY -= 50;
-            tank2.node.style.top = `${tank2.positionY}px`;
-        } else if (isMoveDownBlockedTank2 === false && e.keyCode === 40 ) { 
-            tank2.node.style.transform = 'rotate(180deg)';
-            tank2.positionY += 50;
-            tank2.node.style.top = `${tank2.positionY}px`;
-        // } else if (e.keyCode === 16 ) { // barricade
-        //     const $barricade = document.createElement('div');
-        //         $barricade.classList.add('barricade');
-        //         mapContainer.prepend($barricade);
-        //         $barricade.style.left = `${tank2.positionX}px`;
-        //         $barricade.style.top = `${tank2.positionY}px`;
-        }
-    }
-    window.addEventListener('keyup', moveTank2);
 
     function shootTank2() {
         let $missile = document.createElement('div');
