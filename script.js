@@ -1,9 +1,29 @@
 function tanksGame() {
     const mapContainer = document.querySelector('.game-map');
+
     let pointsPlayer1 = document.querySelector('#pointsPlayer1');
     let pointsPlayer2 = document.querySelector('#pointsPlayer2');
     let armourPlayer1 = document.querySelector('#armourPlayer1');
     let armourPlayer2 = document.querySelector('#armourPlayer2');
+
+    let timerSecs1 = document.querySelector('.timer_secs_1');
+    let timerSecs10 = document.querySelector('.timer_secs_10');
+    let timerMins1 = document.querySelector('.timer_mins_1');
+    let timerMins10 = document.querySelector('.timer_mins_10');
+        timerSecs1.innerHTML = 0;
+        timerSecs10.innerHTML = 0;
+        timerMins1.innerHTML = 0;
+        timerMins10.innerHTML = 0;
+
+
+    /***********************************************************************************************************/
+    /************************************************** Timer **************************************************/
+    /***********************************************************************************************************/
+
+    function startTimer(){
+    }
+
+    setInterval(startTimer, 1000);
 
 
     /***********************************************************************************************************/
