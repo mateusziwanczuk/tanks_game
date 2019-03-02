@@ -181,6 +181,40 @@ function tanksGame() {
 
 
     /***************************************************************************************************************/
+    /************************************************ Repair armour ************************************************/
+    /***************************************************************************************************************/
+
+    let repairIconsPosition = [];
+
+    function createRepairIcon() {
+        let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
+        let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
+        let repairIcon = document.createElement('div');
+            repairIcon.classList.add('repairIcon');
+            repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
+            repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
+            mapContainer.append(repairIcon);
+        let repairIcons = document.querySelectorAll('.repairIcon');
+        let repairIconsArr = Array.from(repairIcons);
+        repairIconsArr.forEach((icon, index) => {
+            repairIconsPosition.push({
+                icon: index,
+                positionY: 
+                    Number(getComputedStyle(icon)
+                    .getPropertyValue('top')
+                    .slice(0, -2)),
+                positionX: 
+                    Number(getComputedStyle(icon)
+                    .getPropertyValue('left')
+                    .slice(0, -2)),
+            })
+        })
+        return repairIconsPosition;
+    } 
+    setInterval(createRepairIcon, 5000);
+
+
+    /***************************************************************************************************************/
     /************************************************ Tanks control ************************************************/
     /***************************************************************************************************************/
 
@@ -197,6 +231,12 @@ function tanksGame() {
         isMoveDownBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX && building.positionY === tank1.positionY + 50;
         })
+        let isTankRepaired = repairIconsPosition.some(icon => {
+            return icon.positionX === tank1.positionX && icon.positionY === tank1.positionY;
+        })
+        if (isTankRepaired) {
+            armourPlayer1.innerHTML = `${tank1.armour += 100}` 
+        }
         if (e.keyCode === 32 ) {
             shootTank1();
         } else if (isMoveRightBlockedTank1 === false && e.keyCode === 68) { // move 50 px right
@@ -232,6 +272,12 @@ function tanksGame() {
         isMoveDownBlockedTank2 = buildingsPosition.some(building => {
             return building.positionX === tank2.positionX && building.positionY === tank2.positionY + 50;
         })
+        let isTankRepaired = repairIconsPosition.some(icon => {
+            return icon.positionX === tank2.positionX && icon.positionY === tank2.positionY;
+        })
+        if (isTankRepaired) {
+            armourPlayer2.innerHTML = `${tank2.armour += 100}` 
+        }
         if (e.keyCode === 13 ) {
             shootTank2();
         } else if (isMoveRightBlockedTank2 === false && e.keyCode === 39) { 
@@ -541,28 +587,5 @@ function tanksGame() {
     }
 
 
-    /***************************************************************************************************************/
-    /************************************************ Repair armour ************************************************/
-    /***************************************************************************************************************/
-
-    function createRepairIcon() {
-        let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
-        let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
-        let repairIcon = document.createElement('div');
-            repairIcon.classList.add('repairIcon');
-            repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
-            repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
-            mapContainer.append(repairIcon);
-        let repairIcons = document.querySelectorAll('.repairIcon');
-        let repairIconsArr = Array.from(repairIcons);
-        console.log(repairIconsArr);
-    } 
-    setInterval(createRepairIcon, 10000);
-
 };
 tanksGame();
-
-
-// isMoveRightBlockedTank1 = buildingsPosition.some(building => {
-//     return building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY;
-// })
