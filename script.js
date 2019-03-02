@@ -30,19 +30,8 @@ function tanksGame() {
         : timerMins.innerHTML = ++mins;
     }
 
-    // let pause = false;
-
-    // addEventListener('keydown', function(p) {
-    //     if (p.keyCode === 80) {
-    //         !pause ? pause = true : pause = false;
-    //     };
-    //     console.log(pause);
-    // });
-
-    // if (!pause){
-        setInterval(countSeconds, 1000);
-        setInterval(countMinutes, 60000);
-    // }
+    setInterval(countSeconds, 1000);
+    setInterval(countMinutes, 60000);
 
 
     /***********************************************************************************************************/
@@ -184,34 +173,24 @@ function tanksGame() {
     /************************************************ Repair armour ************************************************/
     /***************************************************************************************************************/
 
-    let repairIconsPosition = [];
+    let repairIconPosition = [];
+    let repairIcon = document.createElement('div');
 
     function createRepairIcon() {
         let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
         let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
-        let repairIcon = document.createElement('div');
             repairIcon.classList.add('repairIcon');
             repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
             repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
             mapContainer.append(repairIcon);
-        let repairIcons = document.querySelectorAll('.repairIcon');
-        let repairIconsArr = Array.from(repairIcons);
-        repairIconsArr.forEach((icon, index) => {
-            repairIconsPosition.push({
-                icon: index,
-                positionY: 
-                    Number(getComputedStyle(icon)
-                    .getPropertyValue('top')
-                    .slice(0, -2)),
-                positionX: 
-                    Number(getComputedStyle(icon)
-                    .getPropertyValue('left')
-                    .slice(0, -2)),
-            })
-        })
-        return repairIconsPosition;
+        repairIconPosition = {
+            x: randomIconPositionX,
+            y: randomIconPositionY,
+        }
+            console.log(repairIconPosition);
+        return repairIconPosition;
     } 
-    setInterval(createRepairIcon, 5000);
+    setInterval(createRepairIcon, 10000);
 
 
     /***************************************************************************************************************/
@@ -231,13 +210,11 @@ function tanksGame() {
         isMoveDownBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX && building.positionY === tank1.positionY + 50;
         })
-        let isTankRepaired = repairIconsPosition.some(icon => {
-            return icon.positionX === tank1.positionX && icon.positionY === tank1.positionY;
-        })
+        let isTankRepaired = repairIconPosition.x === tank1.positionX && repairIconPosition.y === tank1.positionY;
         if (isTankRepaired) {
             armourPlayer1.innerHTML = `${tank1.armour += 100}`;
-
-            // tank2.armour++ when stops on icon and tank1 is moving.
+            repairIcon.remove();
+            repairIconPosition = { x: -50, y: -50 }
         }
         if (e.keyCode === 32 ) {
             shootTank1();
@@ -274,11 +251,11 @@ function tanksGame() {
         isMoveDownBlockedTank2 = buildingsPosition.some(building => {
             return building.positionX === tank2.positionX && building.positionY === tank2.positionY + 50;
         })
-        let isTankRepaired = repairIconsPosition.some(icon => {
-            return icon.positionX === tank2.positionX && icon.positionY === tank2.positionY;
-        })
+        let isTankRepaired = repairIconPosition.x === tank2.positionX && repairIconPosition.y === tank2.positionY;
         if (isTankRepaired) {
-            armourPlayer2.innerHTML = `${tank2.armour += 100}`; 
+            armourPlayer2.innerHTML = `${tank2.armour += 100}`;
+            repairIcon.remove();
+            repairIconPosition = { x: -50, y: -50 }
         }
         if (e.keyCode === 13 ) {
             shootTank2();
