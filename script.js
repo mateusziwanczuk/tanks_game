@@ -235,7 +235,9 @@ function tanksGame() {
             return icon.positionX === tank1.positionX && icon.positionY === tank1.positionY;
         })
         if (isTankRepaired) {
-            armourPlayer1.innerHTML = `${tank1.armour += 100}` 
+            armourPlayer1.innerHTML = `${tank1.armour += 100}`;
+
+            // tank2.armour++ when stops on icon and tank1 is moving.
         }
         if (e.keyCode === 32 ) {
             shootTank1();
@@ -276,7 +278,7 @@ function tanksGame() {
             return icon.positionX === tank2.positionX && icon.positionY === tank2.positionY;
         })
         if (isTankRepaired) {
-            armourPlayer2.innerHTML = `${tank2.armour += 100}` 
+            armourPlayer2.innerHTML = `${tank2.armour += 100}`; 
         }
         if (e.keyCode === 13 ) {
             shootTank2();
