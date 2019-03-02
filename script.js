@@ -6,24 +6,32 @@ function tanksGame() {
     let armourPlayer1 = document.querySelector('#armourPlayer1');
     let armourPlayer2 = document.querySelector('#armourPlayer2');
 
-    let timerSecs1 = document.querySelector('.timer_secs_1');
-    let timerSecs10 = document.querySelector('.timer_secs_10');
-    let timerMins1 = document.querySelector('.timer_mins_1');
-    let timerMins10 = document.querySelector('.timer_mins_10');
-        timerSecs1.innerHTML = 0;
-        timerSecs10.innerHTML = 0;
-        timerMins1.innerHTML = 0;
-        timerMins10.innerHTML = 0;
+    let timerSecs = document.querySelector('.timer_secs');
+    let timerMins = document.querySelector('.timer_mins');
+        let secs = 0;
+        let mins = 0;
 
 
     /***********************************************************************************************************/
     /************************************************** Timer **************************************************/
     /***********************************************************************************************************/
 
-    function startTimer(){
+    let countSeconds = () => {
+        secs < 9 ? 
+        timerSecs.innerHTML = `0${++secs}` 
+        : timerSecs.innerHTML = ++secs;
+        secs > 58 ? secs = -1 : null;
+        return secs;
     }
 
-    setInterval(startTimer, 1000);
+    let countMinutes = () => {
+        mins < 9 ?
+        timerMins.innerHTML = `0${++mins}`
+        : timerMins.innerHTML = ++mins;
+    }
+
+    setInterval(countSeconds, 1000);
+    setInterval(countMinutes, 60000);
 
 
     /***********************************************************************************************************/
