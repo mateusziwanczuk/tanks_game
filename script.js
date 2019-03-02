@@ -108,6 +108,7 @@ function tanksGame() {
     buildings.forEach((building, index) => {
         buildingsPosition.push({
             building: index,
+            armour: 3,
             positionY: 
                 Number(getComputedStyle(building)
                 .getPropertyValue('top')
@@ -275,13 +276,7 @@ function tanksGame() {
             tank2.node.style.transform = 'rotate(180deg)';
             tank2.positionY += 50;
             tank2.node.style.top = `${tank2.positionY}px`;
-        // } else if (e.keyCode === 16 ) { // barricade
-        //     const $barricade = document.createElement('div');
-        //         $barricade.classList.add('barricade');
-        //         mapContainer.prepend($barricade);
-        //         $barricade.style.left = `${tank2.positionX}px`;
-        //         $barricade.style.top = `${tank2.positionY}px`;
-        }
+        } 
     }
     window.addEventListener('keyup', moveTank2);
 

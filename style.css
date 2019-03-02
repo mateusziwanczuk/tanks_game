@@ -3,6 +3,10 @@
     overflow: hidden;
 }
 
+span {
+    line-height: 1.5rem;
+}
+
 .game-stats {
     height: 100px;
     margin-top: 30px;
