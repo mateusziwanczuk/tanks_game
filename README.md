@@ -1,5 +1,5 @@
-Tanks Game. Copyrights: Mateusz Iwanczuk
-https://github.com/mateusziwanczuk
+Tanks Game. Copyrights: Mateusz Iwanczuk (https://github.com/mateusziwanczuk)
+All rights reserved.
 
 GHPages:
 https://mateusziwanczuk.github.io/tanks_game/
@@ -11,4 +11,4 @@ Gameplay:
 - Destroy obstacles,
 - Win the battle :) 
 
-Vehicles move on the 2d map with WSAD and 🡄 🡆 🡅 🡇. 
+Vehicles constrols: W S A D and 🡄 🡆 🡅 🡇. 
