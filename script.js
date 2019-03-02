@@ -127,6 +127,7 @@ function tanksGame() {
 
     var tank1 = {
         armour: 100,
+        fuel: 100,
         positionX: 0,
         positionY: 0,
         points: 0,
@@ -149,6 +150,7 @@ function tanksGame() {
 
     var tank2 = {
         armour: 100,
+        fuel: 100,
         positionX: 1150,
         positionY: 550,
         points: 0,
@@ -171,11 +173,13 @@ function tanksGame() {
 
 
     /***************************************************************************************************************/
-    /************************************************ Repair armour ************************************************/
+    /************************************************ Create icons *************************************************/
     /***************************************************************************************************************/
 
-    let repairIconPosition = [];
+    let repairIconPosition = {};
+    let fuelIconPosition = {};
     let repairIcon = document.createElement('div');
+    let fuelIcon = document.createElement('div');
 
     function createRepairIcon() {
         let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
@@ -188,10 +192,25 @@ function tanksGame() {
             x: randomIconPositionX,
             y: randomIconPositionY,
         }
-            console.log(repairIconPosition);
         return repairIconPosition;
     } 
+    
+    function createFuelIcon() {
+        let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
+        let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
+        fuelIcon.classList.add('fuelIcon');
+        fuelIcon.style.setProperty('left', `${randomIconPositionX}px`);
+        fuelIcon.style.setProperty('top', `${randomIconPositionY}px`);
+        mapContainer.append(fuelIcon);
+        fuelIconPosition = {
+            x: randomIconPositionX,
+            y: randomIconPositionY,
+        }
+        return fuelIconPosition;
+    } 
+
     setInterval(createRepairIcon, 10000);
+    setInterval(createFuelIcon, 12000);
 
 
     /***************************************************************************************************************/
@@ -199,6 +218,8 @@ function tanksGame() {
     /***************************************************************************************************************/
 
     function moveTank1(e){
+        // tank1.fuel--;
+        // fuelPlayer1.innerHTML = `${tank1.fuel}`;
         isMoveRightBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY;
         })
@@ -216,6 +237,12 @@ function tanksGame() {
             armourPlayer1.innerHTML = `${tank1.armour += 100}`;
             repairIcon.remove();
             repairIconPosition = { x: -50, y: -50 }
+        }
+        let getFuel = fuelIconPosition.x === tank1.positionX && fuelIconPosition.y === tank1.positionY;
+        if (getFuel) {
+            fuelPlayer1.innerHTML = `${tank1.fuel += 100}`;
+            fuelIcon.remove();
+            fuelIconPosition = { x: -50, y: -50 }
         }
         if (e.keyCode === 32 ) {
             shootTank1();
@@ -240,6 +267,8 @@ function tanksGame() {
     window.addEventListener('keyup', moveTank1);
 
     function moveTank2(e){
+        // tank2.fuel--;
+        // fuelPlayer2.innerHTML = `${tank2.fuel}`;
         isMoveRightBlockedTank2 = buildingsPosition.some(building => {
             return building.positionX === tank2.positionX + 50 && building.positionY === tank2.positionY;
         })
@@ -257,6 +286,12 @@ function tanksGame() {
             armourPlayer2.innerHTML = `${tank2.armour += 100}`;
             repairIcon.remove();
             repairIconPosition = { x: -50, y: -50 }
+        }
+        let getFuel = fuelIconPosition.x === tank2.positionX && fuelIconPosition.y === tank2.positionY;
+        if (getFuel) {
+            fuelPlayer2.innerHTML = `${tank2.fuel += 100}`;
+            fuelIcon.remove();
+            fuelIconPosition = { x: -50, y: -50 }
         }
         if (e.keyCode === 13 ) {
             shootTank2();

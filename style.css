@@ -61,7 +61,7 @@ span {
 }
 
 .repairIcon {
-    animation: rotateRepairIcon 5s linear infinite;
+    animation: rotateIcon 5s linear infinite;
     background: url(./img/repair.png);
     background-size: cover;
     height: 24px;
@@ -70,10 +70,22 @@ span {
     width: 24px;
     z-index: 1;
 }
-    @keyframes rotateRepairIcon {
+
+.fuelIcon {
+    animation: rotateIcon 5s linear infinite;
+    background: url(./img/fuel.png);
+    background-size: cover;
+    height: 24px;
+    margin: 13px 0 0 13px;
+    position: absolute;
+    width: 18px;
+    z-index: 1;
+}
+    @keyframes rotateIcon {
         from { transform: rotateY(0deg) }
         to { transform: rotateY(360deg) }
     }
+
 
 .tank1 {
     display: inline-block;
