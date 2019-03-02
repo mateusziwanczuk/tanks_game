@@ -30,8 +30,19 @@ function tanksGame() {
         : timerMins.innerHTML = ++mins;
     }
 
-    setInterval(countSeconds, 1000);
-    setInterval(countMinutes, 60000);
+    // let pause = false;
+
+    // addEventListener('keydown', function(p) {
+    //     if (p.keyCode === 80) {
+    //         !pause ? pause = true : pause = false;
+    //     };
+    //     console.log(pause);
+    // });
+
+    // if (!pause){
+        setInterval(countSeconds, 1000);
+        setInterval(countMinutes, 60000);
+    // }
 
 
     /***********************************************************************************************************/
@@ -537,16 +548,21 @@ function tanksGame() {
     function createRepairIcon() {
         let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
         let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
-        // isIconOnBuilding = buildingsPosition.some(building => {
-        //     return building.positionX === randomIconPositionX && building.positionY === randomIconPositionY;
-        // })
-        const repairIcon = document.createElement('div');
+        let repairIcon = document.createElement('div');
             repairIcon.classList.add('repairIcon');
             repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
             repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
             mapContainer.append(repairIcon);
+        let repairIcons = document.querySelectorAll('.repairIcon');
+        let repairIconsArr = Array.from(repairIcons);
+        console.log(repairIconsArr);
     } 
-    setInterval(createRepairIcon, 30000);
+    setInterval(createRepairIcon, 10000);
 
 };
 tanksGame();
+
+
+// isMoveRightBlockedTank1 = buildingsPosition.some(building => {
+//     return building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY;
+// })
