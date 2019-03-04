@@ -218,8 +218,6 @@ function tanksGame() {
     /***************************************************************************************************************/
 
     function moveTank1(e){
-        // tank1.fuel--;
-        // fuelPlayer1.innerHTML = `${tank1.fuel}`;
         isMoveRightBlockedTank1 = buildingsPosition.some(building => {
             return building.positionX === tank1.positionX + 50 && building.positionY === tank1.positionY;
         })
@@ -250,25 +248,31 @@ function tanksGame() {
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
+            tank1.fuel--;
+            fuelPlayer1.innerHTML = `${tank1.fuel}`;
         } else if (isMoveLeftBlockedTank1 === false && e.keyCode === 65 ) { // move 50px left
             tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
+            tank1.fuel--;
+            fuelPlayer1.innerHTML = `${tank1.fuel}`;
         } else if (isMoveUpBlockedTank1 === false && e.keyCode === 87 ) { // move 50px top
             tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
+            tank1.fuel--;
+            fuelPlayer1.innerHTML = `${tank1.fuel}`;
         } else if (isMoveDownBlockedTank1 === false && e.keyCode === 83 ) { // move 50px down
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
+            tank1.fuel--;
+            fuelPlayer1.innerHTML = `${tank1.fuel}`;
         }
     }
     window.addEventListener('keyup', moveTank1);
 
     function moveTank2(e){
-        // tank2.fuel--;
-        // fuelPlayer2.innerHTML = `${tank2.fuel}`;
         isMoveRightBlockedTank2 = buildingsPosition.some(building => {
             return building.positionX === tank2.positionX + 50 && building.positionY === tank2.positionY;
         })
@@ -299,18 +303,26 @@ function tanksGame() {
             tank2.node.style.transform = 'rotate(90deg)';
             tank2.positionX += 50;
             tank2.node.style.left = `${tank2.positionX}px`;
+            tank2.fuel--;
+            fuelPlayer2.innerHTML = `${tank2.fuel}`;
         } else if (isMoveLeftBlockedTank2 === false && e.keyCode === 37 ) { 
             tank2.node.style.transform = 'rotate(270deg)';
             tank2.positionX -= 50;
             tank2.node.style.left = `${tank2.positionX}px`;
+            tank2.fuel--;
+            fuelPlayer2.innerHTML = `${tank2.fuel}`;
         } else if (isMoveUpBlockedTank2 === false && e.keyCode === 38 ) { 
             tank2.node.style.transform = 'rotate(0deg)';
             tank2.positionY -= 50;
             tank2.node.style.top = `${tank2.positionY}px`;
+            tank2.fuel--;
+            fuelPlayer2.innerHTML = `${tank2.fuel}`;
         } else if (isMoveDownBlockedTank2 === false && e.keyCode === 40 ) { 
             tank2.node.style.transform = 'rotate(180deg)';
             tank2.positionY += 50;
             tank2.node.style.top = `${tank2.positionY}px`;
+            tank2.fuel--;
+            fuelPlayer2.innerHTML = `${tank2.fuel}`;
         } 
     }
     window.addEventListener('keyup', moveTank2);
