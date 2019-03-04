@@ -244,25 +244,25 @@ function tanksGame() {
         }
         if (e.keyCode === 32 ) {
             shootTank1();
-        } else if (isMoveRightBlockedTank1 === false && e.keyCode === 68) { // move 50 px right
+        } else if (isMoveRightBlockedTank1 === false && tank1.fuel > 0 && e.keyCode === 68) { // move 50 px right
             tank1.node.style.transform = 'rotate(90deg)';
             tank1.positionX += 50;
             tank1.node.style.left = `${tank1.positionX}px`;
             tank1.fuel--;
             fuelPlayer1.innerHTML = `${tank1.fuel}`;
-        } else if (isMoveLeftBlockedTank1 === false && e.keyCode === 65 ) { // move 50px left
+        } else if (isMoveLeftBlockedTank1 === false && tank1.fuel > 0 && e.keyCode === 65 ) { // move 50px left
             tank1.node.style.transform = 'rotate(270deg)';
             tank1.positionX -= 50;
             tank1.node.style.left = `${tank1.positionX}px`;
             tank1.fuel--;
             fuelPlayer1.innerHTML = `${tank1.fuel}`;
-        } else if (isMoveUpBlockedTank1 === false && e.keyCode === 87 ) { // move 50px top
+        } else if (isMoveUpBlockedTank1 === false && tank1.fuel > 0 && e.keyCode === 87 ) { // move 50px top
             tank1.node.style.transform = 'rotate(0deg)';
             tank1.positionY -= 50;
             tank1.node.style.top = `${tank1.positionY}px`;
             tank1.fuel--;
             fuelPlayer1.innerHTML = `${tank1.fuel}`;
-        } else if (isMoveDownBlockedTank1 === false && e.keyCode === 83 ) { // move 50px down
+        } else if (isMoveDownBlockedTank1 === false && tank1.fuel > 0 && e.keyCode === 83 ) { // move 50px down
             tank1.node.style.transform = 'rotate(180deg)';
             tank1.positionY += 50;
             tank1.node.style.top = `${tank1.positionY}px`;
@@ -299,25 +299,25 @@ function tanksGame() {
         }
         if (e.keyCode === 13 ) {
             shootTank2();
-        } else if (isMoveRightBlockedTank2 === false && e.keyCode === 39) { 
+        } else if (isMoveRightBlockedTank2 === false && tank2.fuel > 0 && e.keyCode === 39) { 
             tank2.node.style.transform = 'rotate(90deg)';
             tank2.positionX += 50;
             tank2.node.style.left = `${tank2.positionX}px`;
             tank2.fuel--;
             fuelPlayer2.innerHTML = `${tank2.fuel}`;
-        } else if (isMoveLeftBlockedTank2 === false && e.keyCode === 37 ) { 
+        } else if (isMoveLeftBlockedTank2 === false && tank2.fuel > 0 && e.keyCode === 37 ) { 
             tank2.node.style.transform = 'rotate(270deg)';
             tank2.positionX -= 50;
             tank2.node.style.left = `${tank2.positionX}px`;
             tank2.fuel--;
             fuelPlayer2.innerHTML = `${tank2.fuel}`;
-        } else if (isMoveUpBlockedTank2 === false && e.keyCode === 38 ) { 
+        } else if (isMoveUpBlockedTank2 === false && tank2.fuel > 0 && e.keyCode === 38 ) { 
             tank2.node.style.transform = 'rotate(0deg)';
             tank2.positionY -= 50;
             tank2.node.style.top = `${tank2.positionY}px`;
             tank2.fuel--;
             fuelPlayer2.innerHTML = `${tank2.fuel}`;
-        } else if (isMoveDownBlockedTank2 === false && e.keyCode === 40 ) { 
+        } else if (isMoveDownBlockedTank2 === false && tank2.fuel > 0 && e.keyCode === 40 ) { 
             tank2.node.style.transform = 'rotate(180deg)';
             tank2.positionY += 50;
             tank2.node.style.top = `${tank2.positionY}px`;
@@ -371,6 +371,8 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.fuel = 100;
+                    fuelPlayer2.innerHTML = `${tank2.fuel}`;
                     tank2.positionX = 1150;
                     tank2.positionY = 550;
                     tank2.setStartPosition();
@@ -399,6 +401,8 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.fuel = 100;
+                    fuelPlayer2.innerHTML = `${tank2.fuel}`;
                     tank2.positionX = 1150;
                     tank2.positionY = 550;
                     tank2.setStartPosition();
@@ -427,6 +431,8 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.fuel = 100;
+                    fuelPlayer2.innerHTML = `${tank2.fuel}`;
                     tank2.positionX = 1150;
                     tank2.positionY = 550;
                     tank2.setStartPosition();
@@ -455,6 +461,8 @@ function tanksGame() {
                     pointsPlayer1.innerHTML = `${tank1.points}`;
                     tank2.armour = 100;
                     armourPlayer2.innerHTML = `${tank2.armour}`;
+                    tank2.fuel = 100;
+                    fuelPlayer2.innerHTML = `${tank2.fuel}`;
                     tank2.positionX = 1150;
                     tank2.positionY = 550;
                     tank2.setStartPosition();
@@ -508,6 +516,8 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.fuel = 100;
+                    fuelPlayer1.innerHTML = `${tank1.fuel}`;
                     tank1.positionX = 0;
                     tank1.positionY = 0;
                     tank1.setStartPosition();
@@ -536,6 +546,8 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.fuel = 100;
+                    fuelPlayer1.innerHTML = `${tank1.fuel}`;
                     tank1.positionX = 0;
                     tank1.positionY = 0;
                     tank1.setStartPosition();
@@ -564,6 +576,8 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.fuel = 100;
+                    fuelPlayer1.innerHTML = `${tank1.fuel}`;
                     tank1.positionX = 0;
                     tank1.positionY = 0;
                     tank1.setStartPosition();
@@ -593,6 +607,8 @@ function tanksGame() {
                     pointsPlayer2.innerHTML = `${tank2.points}`;
                     tank1.armour = 100;
                     armourPlayer1.innerHTML = `${tank1.armour}`;
+                    tank1.fuel = 100;
+                    fuelPlayer1.innerHTML = `${tank1.fuel}`;
                     tank1.positionX = 0;
                     tank1.positionY = 0;
                     tank1.setStartPosition();
