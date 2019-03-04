@@ -40,7 +40,7 @@ function tanksGame() {
 
     function createRow(startX, endX, y) {
         for (let x = startX; x <= endX; x += 50) {
-            const building = document.createElement('div');
+            let building = document.createElement('div');
             building.classList.add('building');
             building.style.setProperty('left', `${x}px`);
             building.style.setProperty('top', `${y}px`);
@@ -49,7 +49,7 @@ function tanksGame() {
     }
     function createColumn(startY, endY, x) {
         for (let y = startY; y <= endY; y += 50) {
-            const building = document.createElement('div');
+            let building = document.createElement('div');
             building.classList.add('building');
             building.style.setProperty('top', `${y}px`);
             building.style.setProperty('left', `${x}px`);
@@ -108,7 +108,7 @@ function tanksGame() {
     buildings.forEach((building, index) => {
         buildingsPosition.push({
             building: index,
-            armour: 3,
+            armour: 2,
             positionY: 
                 Number(getComputedStyle(building)
                 .getPropertyValue('top')
@@ -346,14 +346,21 @@ function tanksGame() {
             $missilePositionX += 50;
             $missilePositionEven50 = Math.round(++$missilePositionX / 50) * 50;
             $missile.style.left = $missilePositionEven50 + "px";
+            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
             let isBuildingHit = buildingsPosition.some(building => {
                 return $missilePositionEven50 === building.positionX && building.positionY === $missilePositionY;
             });
-            let isTankHit = $missilePositionEven50 === tank2.positionX && $missilePositionY === tank2.positionY;
-            if (isBuildingHit) {
-                $missile.remove();
-                clearInterval(missileStrikeRightInterval);
-            }
+            /* -------------------- Destroying buildings -------------------- */
+                        let buildingHit = buildingsPosition.find(building => {
+                            return building.positionX === $missilePositionEven50 && building.positionY === $missilePositionY;
+                        });
+                        console.log(buildingHit);
+                        if (isBuildingHit) {
+                            $missile.remove();
+                            buildingHit.armour--; 
+                            clearInterval(missileStrikeRightInterval);
+                        }
+            /* -------------------------------------------------------------- */
             if (isTankHit){
                 $missile.remove();
                 clearInterval(missileStrikeRightInterval);
