@@ -60,7 +60,7 @@ span {
     z-index: 2;
 }
 
-.repairIcon {
+.repairIcon, .fuelIcon {
     animation: rotateIcon 5s linear infinite;
     background: url(./img/repair.png);
     background-size: cover;
@@ -87,9 +87,8 @@ span {
     }
 
 
-.tank1 {
+.tank1, .tank2{
     display: inline-block;
-    background-image: url("img/tank1.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -98,20 +97,13 @@ span {
     height: 50px;
     transform: rotate(90deg);
     transition: top 1s, left 1s;
+    z-index: 2;
 }
 
-.tank2 {
-    display: inline-block;
-    background-image: url("img/tank2.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    transform: rotate(90deg);
-    transition: top 1s, left 1s;
-}
+.tank1 { background-image: url("img/tank1.png") }
+.tank2 { background-image: url("img/tank2.png") }
+
+
 
 /* .barricade {
     position: absolute;

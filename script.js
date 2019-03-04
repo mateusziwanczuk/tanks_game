@@ -184,7 +184,7 @@ function tanksGame() {
     function createRepairIcon() {
         let randomIconPositionX = Math.round((Math.random(1) * 1150) / 50) * 50;
         let randomIconPositionY = Math.round((Math.random(1) * 550) / 50) * 50;
-            repairIcon.classList.add('repairIcon');
+            repairIcon.classList.add('icon');
             repairIcon.style.setProperty('left', `${randomIconPositionX}px`);
             repairIcon.style.setProperty('top', `${randomIconPositionY}px`);
             mapContainer.append(repairIcon);
