@@ -60,7 +60,7 @@ span {
     z-index: 2;
 }
 
-.repairIcon, .fuelIcon {
+.repairIcon {
     animation: rotateIcon 5s linear infinite;
     background: url(./img/repair.png);
     background-size: cover;
@@ -102,8 +102,6 @@ span {
 
 .tank1 { background-image: url("img/tank1.png") }
 .tank2 { background-image: url("img/tank2.png") }
-
-
 
 /* .barricade {
     position: absolute;
