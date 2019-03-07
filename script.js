@@ -1,3 +1,14 @@
+let body = document.querySelector('body');
+
+function menuGame() {
+    document.querySelector('.game-map').remove();
+    document.querySelector('.game-stats').remove();
+    let menu = document.createElement('div');
+    menu.classList.add('game-menu');
+    body.append(menu);
+}
+
+
 function tanksGame() {
     const mapContainer = document.querySelector('.game-map');
 
@@ -633,3 +644,4 @@ function tanksGame() {
 
 };
 tanksGame();
+// menuGame();
