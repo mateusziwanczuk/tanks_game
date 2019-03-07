@@ -8,9 +8,20 @@ span {
 }
 
 .game-menu {
-    border: 2px solid red;
-    width: 100%;
+    background: white;
+    display: flex;
     height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.game-menu-button {
+    border: 1px solid grey;
+    display: flex;
+    height: 100px;
+    text-transform: uppercase;
+    width: 300px;
 }
 
 .game-stats {

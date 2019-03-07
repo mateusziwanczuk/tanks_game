@@ -1,15 +1,23 @@
 let body = document.querySelector('body');
 
 function menuGame() {
-    document.querySelector('.game-map').remove();
-    document.querySelector('.game-stats').remove();
     let menu = document.createElement('div');
     menu.classList.add('game-menu');
     body.append(menu);
-}
 
+    let startButton = document.createElement('div');
+    startButton.classList.add('game-menu-button')
+    menu.append(startButton);
+        let startButtonText = document.createElement('h1');
+        startButtonText.innerHTML = "Start game!";
+        startButton.append(startButtonText);
+        
+    startButton.addEventListener('click', tanksGame);
+}
+menuGame();
 
 function tanksGame() {
+    document.querySelector('.game-menu').remove();
     const mapContainer = document.querySelector('.game-map');
 
     let pointsPlayer1 = document.querySelector('#pointsPlayer1');
@@ -640,8 +648,5 @@ function tanksGame() {
             var missileStrikeDownInterval = setInterval(missileStrikeDown, 10);
         }
     }
-
-
 };
-tanksGame();
-// menuGame();
+
