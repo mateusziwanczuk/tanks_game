@@ -1,12 +1,12 @@
 * {
     margin: auto;
     overflow: hidden;
-    font-family: sans-serif;
+    font-family: arial, sans-serif;
 }
 
 @font-face {
     font-family: 'army';
-    src: url('/font/World\ Conflict\ .ttf');
+    src: url('./font/army.ttf');
 }
 
 span {
