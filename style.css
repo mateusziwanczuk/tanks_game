@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: 'army';
-    src: url('/font/army.ttf') format('truetype');
+    src: url('./font/army.ttf') format('truetype');
 }
 
 span {
