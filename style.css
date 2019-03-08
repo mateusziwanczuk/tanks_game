@@ -18,7 +18,6 @@ span {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    min-width: 970px;
     position: absolute;
     top: 0;
     width: 100%;
@@ -26,7 +25,7 @@ span {
 
 .game-menu-header {
     font-family: 'army';
-    font-size: 8rem;
+    font-size: 8vw;
     font-weight: 400;
     color: rgb(145, 118, 79);
     margin-top: 7%;
@@ -34,7 +33,7 @@ span {
 
 .game-menu-tanks {
     display: flex;
-    height: 200px;
+    height: 25%;
     width: 85%;
 }
 
@@ -75,8 +74,9 @@ span {
     color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    font-size: 1.3vw;
     display: flex;
-    height: 70px;
+    height: 50%;
     text-transform: uppercase;
     width: 18%;
 }

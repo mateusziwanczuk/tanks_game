@@ -40,12 +40,17 @@ function menuGame() {
     let menuControlsRight = document.createElement('div');
     menuControlsRight.classList.add('game-menu-controls-right');
     menuControls.append(menuControlsRight);
-        
+
     startButton.addEventListener('click', tanksGame);
 }
 menuGame();
 
 function tanksGame() {
+
+    if (window.innerHeight < 720 || window.innerWidth < 1200) {
+        alert("Change size of the screen using CTRL key and mouse scroll.");
+    }
+
     document.querySelector('.game-menu').remove();
     const mapContainer = document.querySelector('.game-map');
 
@@ -58,7 +63,6 @@ function tanksGame() {
     let timerMins = document.querySelector('.timer_mins');
         let secs = 0;
         let mins = 0;
-
 
     /***********************************************************************************************************/
     /************************************************** Timer **************************************************/
