@@ -8,7 +8,9 @@
 
 - Informacja o konieczności zmniejszenia ekranu z użyciem ctrl+scroll
 
-- Dodać instrukcję, przycisk startu i wyjścia
+- Dodać instrukcję, przycisk startu i wyjścia.
+
+- Po wciśnięciu ESC gra wychodzi do menu. 
 
 
 

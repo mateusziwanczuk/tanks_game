@@ -1,6 +1,12 @@
 * {
     margin: auto;
     overflow: hidden;
+    font-family: sans-serif;
+}
+
+@font-face {
+    font-family: 'army';
+    src: url('/font/World\ Conflict\ .ttf');
 }
 
 span {
@@ -10,18 +16,82 @@ span {
 .game-menu {
     background: white;
     display: flex;
+    flex-direction: column;
     height: 100vh;
+    min-width: 970px;
     position: absolute;
     top: 0;
     width: 100%;
 }
 
-.game-menu-button {
-    border: 1px solid grey;
+.game-menu-header {
+    font-family: 'army';
+    font-size: 8rem;
+    font-weight: 400;
+    color: rgb(145, 118, 79);
+    margin-top: 7%;
+}
+
+.game-menu-tanks {
     display: flex;
-    height: 100px;
+    height: 200px;
+    width: 85%;
+}
+
+.game-menu-tank1 {
+    background: url(./img/tank1_menu.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 35%;
+}
+
+.game-menu-tank2 {
+    background: url(./img/tank2_menu.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 35%;
+}
+
+.game-menu-controls {
+    width: 80%;
+    height: 20vh;
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.game-menu-controls-left {
+    width: 38%;
+    height: 100%;
+    background: url(./img/controls1.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.game-menu-button {
+    background: rgb(190, 178, 161);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    display: flex;
+    height: 70px;
     text-transform: uppercase;
-    width: 300px;
+    width: 18%;
+}
+
+.game-menu-button:hover {
+    background: rgb(149, 172, 134); 
+}
+
+.game-menu-controls-right {
+    width: 38%;
+    height: 100%;
+    background: url(./img/controls2.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .game-stats {

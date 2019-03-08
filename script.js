@@ -5,12 +5,41 @@ function menuGame() {
     menu.classList.add('game-menu');
     body.append(menu);
 
+    let menuHeader = document.createElement('h1');
+    menuHeader.classList.add('game-menu-header');
+    menu.append(menuHeader);
+    menuHeader.innerHTML = "Tanks Game";
+
+    let menuTanks = document.createElement('div');
+    menuTanks.classList.add('game-menu-tanks');
+    menu.append(menuTanks);
+
+    let menuTank1 = document.createElement('div');
+    menuTank1.classList.add('game-menu-tank1');
+    menuTanks.append(menuTank1);
+
+    let menuTank2 = document.createElement('div');
+    menuTank2.classList.add('game-menu-tank2');
+    menuTanks.append(menuTank2);
+
+    let menuControls = document.createElement('div');
+    menuControls.classList.add('game-menu-controls');
+    menu.append(menuControls);
+        
+    let menuControlsLeft = document.createElement('div');
+    menuControlsLeft.classList.add('game-menu-controls-left');
+    menuControls.append(menuControlsLeft);
+
     let startButton = document.createElement('div');
     startButton.classList.add('game-menu-button')
-    menu.append(startButton);
+    menuControls.append(startButton);
         let startButtonText = document.createElement('h1');
-        startButtonText.innerHTML = "Start game!";
+        startButtonText.innerHTML = "Start!";
         startButton.append(startButtonText);
+
+    let menuControlsRight = document.createElement('div');
+    menuControlsRight.classList.add('game-menu-controls-right');
+    menuControls.append(menuControlsRight);
         
     startButton.addEventListener('click', tanksGame);
 }
