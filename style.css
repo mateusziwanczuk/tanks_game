@@ -1,7 +1,7 @@
 * {
+    font-family: arial, sans-serif;
     margin: auto;
     overflow: hidden;
-    font-family: arial, sans-serif;
 }
 
 @font-face {
@@ -24,10 +24,10 @@ span {
 }
 
 .game-menu-header {
+    color: rgb(145, 118, 79);
     font-family: 'army';
     font-size: 8vw;
     font-weight: 400;
-    color: rgb(145, 118, 79);
     margin-top: 7%;
 }
 
@@ -39,43 +39,44 @@ span {
 
 .game-menu-tank1 {
     background: url(./img/tank1_menu.png);
-    background-size: contain;
     background-repeat: no-repeat;
+    background-size: contain;
     height: 100%;
     width: 35%;
 }
 
 .game-menu-tank2 {
     background: url(./img/tank2_menu.png);
-    background-size: contain;
     background-repeat: no-repeat;
+    background-size: contain;
     height: 100%;
     width: 35%;
 }
 
 .game-menu-controls {
-    width: 80%;
-    height: 20vh;
     display: flex;
+    height: 20vh;
     margin-bottom: 5%;
+    width: 80%;
 }
 
 .game-menu-controls-left {
-    width: 38%;
-    height: 100%;
     background: url(./img/controls1.png);
-    background-size: 70%;
-    background-repeat: no-repeat;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    height: 100%;
+    width: 38%;
 }
 
 .game-menu-button {
     background: rgb(190, 178, 161);
-    color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    font-size: 1.3vw;
+    color: white;
+    cursor: pointer;
     display: flex;
+    font-size: 1.3vw;
     height: 50%;
     text-transform: uppercase;
     width: 18%;
@@ -86,12 +87,12 @@ span {
 }
 
 .game-menu-controls-right {
-    width: 38%;
-    height: 100%;
     background: url(./img/controls2.png);
-    background-size: 70%;
-    background-repeat: no-repeat;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    height: 100%;
+    width: 38%;
 }
 
 .game-stats {
@@ -175,15 +176,15 @@ span {
 
 
 .tank1, .tank2{
-    display: inline-block;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    position: absolute;
-    width: 50px;
+    display: inline-block;
     height: 50px;
+    position: absolute;
     transform: rotate(90deg);
     transition: top 1s, left 1s;
+    width: 50px;
     z-index: 2;
 }
 
@@ -198,9 +199,9 @@ span {
 } */
 
 .missile {
-    position: absolute;
-    width: 10px;
-    height: 10px;
     background: black;
     border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
 }

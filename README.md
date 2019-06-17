@@ -12,3 +12,5 @@ Gameplay:
 - Win the battle :) 
 
 Vehicles constrols: W S A D and 🡄 🡆 🡅 🡇. 
+
+![screenshots](/img/readme_screen.png?raw=true "Screenshot")
